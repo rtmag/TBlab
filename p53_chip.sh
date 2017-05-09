@@ -79,25 +79,25 @@ samtools view -b -F 4 /root/stuff/bam/TP53_48_DMSO_Aligned.sortedByCoord.out.bam
 samtools view -b -F 4 /root/stuff/bam/TP53_48_DOXO_Aligned.sortedByCoord.out.bam > /root/stuff/bam/TP53_48_DOXO.bam 
 
 ## DUP REMOVAL
-picard-tools MarkDuplicates REMOVE_DUPLICATES=true I=/root/stuff/bam/P53_Venkata.bam \
+java -jar /root/myPrograms/picard/build/libs/picard.jar MarkDuplicates REMOVE_DUPLICATES=true I=/root/stuff/bam/P53_Venkata.bam \
 O=/root/stuff/bam/P53_Venkata_rmdup.bam  M=/root/stuff/bam/P53_Venkata.mfile
 
-picard-tools MarkDuplicates REMOVE_DUPLICATES=true I=/root/stuff/bam/P53_48h_doxo_s1.bam \
+java -jar /root/myPrograms/picard/build/libs/picard.jar MarkDuplicates REMOVE_DUPLICATES=true I=/root/stuff/bam/P53_48h_doxo_s1.bam \
 O=/root/stuff/bam/P53_48h_doxo_s1_rmdup.bam  M=/root/stuff/bam/P53_48h_doxo_s1.mfile
 
-picard-tools MarkDuplicates REMOVE_DUPLICATES=true I=/root/stuff/bam/P53_24h_doxo_s1.bam \
+java -jar /root/myPrograms/picard/build/libs/picard.jar MarkDuplicates REMOVE_DUPLICATES=true I=/root/stuff/bam/P53_24h_doxo_s1.bam \
 O=/root/stuff/bam/P53_24h_doxo_s1_rmdup.bam  M=/root/stuff/bam/P53_24h_doxo_s1.mfile
 
-picard-tools MarkDuplicates REMOVE_DUPLICATES=true I=/root/stuff/bam/input_48_DMSO.bam \
+java -jar /root/myPrograms/picard/build/libs/picard.jar MarkDuplicates REMOVE_DUPLICATES=true I=/root/stuff/bam/input_48_DMSO.bam \
 O=/root/stuff/bam/input_48_DMSO_rmdup.bam  M=/root/stuff/bam/input_48_DMSO.mfile
 
-picard-tools MarkDuplicates REMOVE_DUPLICATES=true I=/root/stuff/bam/input_48_DOXO.bam \
+java -jar /root/myPrograms/picard/build/libs/picard.jar MarkDuplicates REMOVE_DUPLICATES=true I=/root/stuff/bam/input_48_DOXO.bam \
 O=/root/stuff/bam/input_48_DOXO_rmdup.bam  M=/root/stuff/bam/input_48_DOXO.mfile
 
-picard-tools MarkDuplicates REMOVE_DUPLICATES=true I=/root/stuff/bam/TP53_48_DMSO.bam \
+java -jar /root/myPrograms/picard/build/libs/picard.jar MarkDuplicates REMOVE_DUPLICATES=true I=/root/stuff/bam/TP53_48_DMSO.bam \
 O=/root/stuff/bam/TP53_48_DMSO_rmdup.bam  M=/root/stuff/bam/TP53_48_DMSO.mfile
 
-picard-tools MarkDuplicates REMOVE_DUPLICATES=true I=/root/stuff/bam/TP53_48_DOXO.bam \
+java -jar /root/myPrograms/picard/build/libs/picard.jar MarkDuplicates REMOVE_DUPLICATES=true I=/root/stuff/bam/TP53_48_DOXO.bam \
 O=/root/stuff/bam/TP53_48_DOXO_rmdup.bam  M=/root/stuff/bam/TP53_48_DOXO.mfile
 
 ###### MACS2
