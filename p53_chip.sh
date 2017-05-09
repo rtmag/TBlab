@@ -100,4 +100,16 @@ O=/root/stuff/bam/TP53_48_DMSO_rmdup.bam  M=/root/stuff/bam/TP53_48_DMSO.mfile
 picard-tools MarkDuplicates REMOVE_DUPLICATES=true I=/root/stuff/bam/TP53_48_DOXO.bam \
 O=/root/stuff/bam/TP53_48_DOXO_rmdup.bam  M=/root/stuff/bam/TP53_48_DOXO.mfile
 
-######
+###### MACS2
+
+macs2 callpeak -f BAMPE -g hs -q 0.05 --keep-dup auto --call-summits -n P53_Venkata --outdir /root/stuff/macs2/ \
+-t /root/stuff/bam/P53_Venkata_rmdup.bam -c /root/stuff/bam/input_48_DOXO_rmdup.bam &
+
+macs2 callpeak -f BAMPE -g hs -q 0.05 --keep-dup auto --call-summits -n P53_48h_doxo_s1 --outdir /root/stuff/macs2/ \
+-t /root/stuff/bam/P53_48h_doxo_s1_rmdup.bam -c /root/stuff/bam/input_48_DOXO_rmdup.bam &
+
+macs2 callpeak -f BAMPE -g hs -q 0.05 --keep-dup auto --call-summits -n TP53_48h_doxo --outdir /root/stuff/macs2/ \
+-t /root/stuff/bam/TP53_48_DOXO_rmdup.bam -c /root/stuff/bam/input_48_DOXO_rmdup.bam &
+
+macs2 callpeak -f BAMPE -g hs -q 0.05 --keep-dup auto --call-summits -n TP53_48h_dmso --outdir /root/stuff/macs2/ \
+-t /root/stuff/bam/TP53_48_DMSO_rmdup.bam -c /root/stuff/bam/input_48_DMSO_rmdup.bam &
