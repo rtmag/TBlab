@@ -59,8 +59,8 @@
        --outSAMtype BAM SortedByCoordinate
        
    /root/myPrograms/STAR/bin/STAR --readFilesIn \
-/root/stuff/RawData/TP53_48_DOXO/TP53_48_DMSO_1.fq.gz \
-/root/stuff/RawData/TP53_48_DOXO/TP53_48_DMSO_2.fq.gz \
+/root/stuff/RawData/TP53_48_DMSO/TP53_48_DMSO_1.fq.gz \
+/root/stuff/RawData/TP53_48_DMSO/TP53_48_DMSO_2.fq.gz \
        --outFileNamePrefix /root/stuff/bam/TP53_48_DMSO_ \
        --readFilesCommand zcat --runThreadN 30 --genomeDir /root/resources/star_hg38_overhang100/ \
        --outFilterMultimapNmax 1 --outFilterMismatchNmax 999 \
