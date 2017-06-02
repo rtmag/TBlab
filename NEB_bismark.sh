@@ -21,5 +21,8 @@
 
 ##
 
-~/myPrograms/Bismark/bismark_methylation_extractor --multicore 62 --gzip --buffer_size 20G --paired-end --ample_memory --cytosine_report --genome_folder /root/resources/HCT116_bs/ ./combine_hct116_WGBS_1_bismark_bt2_pe.bam
+~/myPrograms/Bismark/bismark_methylation_extractor --multicore 62 --gzip --buffer_size 100G --paired-end --ample_memory --comprehensive --cytosine_report --genome_folder /root/resources/HCT116_bs/ HCT116.Decitabine.WGBS.run1.1_bismark_bt2_pe.bam
+~/myPrograms/Bismark/bismark_methylation_extractor --multicore 62 --gzip --buffer_size 100G --paired-end --ample_memory --comprehensive --cytosine_report --genome_folder /root/resources/HCT116_bs/ HCT116.Decitabine.WGBS.run2.1_bismark_bt2_pe.bam
 
+~/myPrograms/Bismark/bismark_methylation_extractor --multicore 62 --gzip --buffer_size 100G --paired-end --ample_memory --comprehensive --cytosine_report --genome_folder /root/resources/HCT116_bs/ HCT116.control.WGBS.run1.1_bismark_bt2_pe.bam
+~/myPrograms/Bismark/bismark_methylation_extractor --multicore 62 --gzip --buffer_size 100G --paired-end --ample_memory --comprehensive --cytosine_report --genome_folder /root/resources/HCT116_bs/ HCT116.control.WGBS.run2.1_bismark_bt2_pe.bam
