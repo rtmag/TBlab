@@ -28,3 +28,22 @@ pooled.myDiff=calculateDiffMeth(pooled.meth,num.cores=40)
 cov.meth=filterByCoverage(meth,lo.count=5)
 cov.myDiff=calculateDiffMeth(cov.meth,num.cores=40)
 #
+
+###FISHER
+
+myobj=methRead(file.list,
+           sample.id=list("decitabine1","decitabine2","control1","control2"),
+           assembly="hg38",
+           treatment=c(1,1,0,0),
+           context="CpG",
+           pipeline="bismarkCytosineReport",
+           header=FALSE,
+           mincov=1)
+meth=unite(myobj, destrand=TRUE,mc.cores=40)
+
+pooled.meth=pool(meth,sample.ids=c("decitabine","control"))
+pooled.meth.cov=pooled.meth[as.logical(rowSums(getData(pooled.meth)[,c(5,8)]>5)),]
+pooled.myDiff=calculateDiffMeth(pooled.meth.cov,num.cores=40)
+
+write.table(pooled.myDiff,"all_fish.txt",quote=F,row.names=F,col.names=F,sep="\t")
+
