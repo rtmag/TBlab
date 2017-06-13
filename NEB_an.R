@@ -62,4 +62,5 @@ for(i in 1:length(chr)){
 
 #9)Intersection between Hypo methylated cpgs after P53-KO vs Hypomethylated after 5az treatment
 #10)Steph's HCT116 atac-seq great analysis (Only promoters and complete set).
+macs2 callpeak -t atac_steph1_Aligned.sortedByCoord.out.bam -f BAMPE -n hct116_atac -g hs --broad --keep-dup all
 
