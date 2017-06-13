@@ -1,8 +1,23 @@
+more fisher_neb.txt|perl -pe 's/^/chr/g'|perl -pe 's/(chr([1-9]|1[0-9]|2[0-2]))\t/$1HOLAMUNDO\t/g'| \
+perl -pe "s/chr23\t/chrXHOLAMUNDO\t/g"|perl -pe 's/chr24\t/chrYHOLAMUNDO\t/g'|grep "HOLAMUNDO"| \
+perl -pe 's/HOLAMUNDO//g' > fisher_neb_all.txt
+
+#R
+x=read.table("fisher_neb_all.txt",sep="\t",header=F,stringsAsFactors=F)
+
+diff=x[(x[,6]<0.05 & x[,7]<(-25)),]
+write.table(diff,"fisher_neb_diff.txt",quote=F,row.names=F,col.names=F,sep="\t")
+
+undiff=x[ x[,7]>(-25) & rowMeans(cbind(x[,8],x[,9]))>.650 & x[,6]>0.05,]
+write.table(undiff,"fisher_neb_undiff.txt",quote=F,row.names=F,col.names=F,sep="\t")
+
 
 #1)CpG are in clusters 
-more all_fish.txt|perl -pe 's/^/chr/g'|perl -pe 's/(chr([1-9]|1[0-9]|2[0-2]))\t/$1HOLAMUNDO\t/g'| \
-perl -pe "s/chr23\t/chrXHOLAMUNDO\t/g"|perl -pe 's/chr24\t/chrYHOLAMUNDO\t/g'|grep "HOLAMUNDO"| \
-perl -pe 's/HOLAMUNDO//g' > DMC_fisher.txt
+annotatePeaks.pl fisher_neb_undiff.txt hg38 > fisher_neb_undiff.anno
+more fisher_neb_undiff.anno |cut -f9|grep CpG|wc -l # 1116
+more fisher_neb_undiff.anno |cut -f9|wc -l # 144274
+
+annotatePeaks.pl fisher_neb_diff.txt hg38 > fisher_neb_undiff.anno
 # R
 dmc=read.table("DMC_fisher.txt",sep="\t",stringsAsFactors=F)
 options(scipen=999)
