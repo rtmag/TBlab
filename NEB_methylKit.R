@@ -45,5 +45,7 @@ pooled.meth=pool(meth,sample.ids=c("decitabine","control"))
 pooled.meth.cov=pooled.meth[as.logical(rowSums(getData(pooled.meth)[,c(5,8)]>5)),]
 pooled.myDiff=calculateDiffMeth(pooled.meth.cov,num.cores=40)
 
-write.table(pooled.myDiff,"all_fish.txt",quote=F,row.names=F,col.names=F,sep="\t")
+pooledData=getData(pooled.meth.cov)
+fisher_neb=data.frame(pooled.myDiff,decitabine=(pooledData[,6]/pooledData[,5]),control=(pooledData[,9]/pooledData[,8]) ) 
+write.table(fisher_neb,"fisher_neb.txt",quote=F,row.names=F,col.names=F,sep="\t")
 
