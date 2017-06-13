@@ -21,7 +21,7 @@ for(i in 1:length(chr)){
   difference=diff(dmc[ix,2])
   position=dmc[ix,2]
   position=position[-length(position)]
-  plot(position,log10(difference),xlab="Chromosome position",ylab="Log10 DMC interdistance",main=chr[i],col=adjustcolor("black",alpha=.007))
+  plot(position,log10(difference),xlab="Chromosome position",ylab="Log10 DMC interdistance",main=chr[i],col=adjustcolor("black",alpha=.004))
   plot(density(log10(difference)),main=chr[i])
   ploty=ploty+1
   
