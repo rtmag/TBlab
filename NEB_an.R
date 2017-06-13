@@ -6,17 +6,32 @@ perl -pe 's/HOLAMUNDO//g' > DMC_fisher.txt
 # R
 dmc=read.table("DMC_fisher.txt",sep="\t",stringsAsFactors=F)
 options(scipen=999)
-pdf("1_distance_DMC.pdf")
+par(mfrow=c(3,2))
 chr=c(paste("chr",1:22,sep=""),"chrX","chrY")
+ploty=1
+times=1
 for(i in 1:length(chr)){
+
+  if(ploty==1){
+     png(paste("1_",times,"distance_DMC.png",sep=""))
+      par(mfrow=c(3,2))
+  }
+  
   ix=(dmc[,1]==chr[i])
   difference=diff(dmc[ix,2])
   position=dmc[ix,2]
   position=position[-length(position)]
-  plot(position,-log10(difference),xlab="Chromosome position",ylab="-Log10 Distance between Differentially methylated CpG",main=chr[i])
+  plot(position,log10(difference),xlab="Chromosome position",ylab="Log10 DMC interdistance",main=chr[i],col=adjustcolor("black",alpha=.007))
   plot(density(log10(difference)),main=chr[i])
+  ploty=ploty+1
+  
+  if(ploty==4){
+     dev.off()
+     ploty=1
+     times=times+1
+  }
+  
 }
-dev.off()
 
 #2)are they in CpG islands?
 #3)Are they demethylated in groups or individual CpGs
