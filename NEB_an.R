@@ -13,13 +13,15 @@ write.table(undiff,"fisher_neb_undiff.txt",quote=F,row.names=F,col.names=F,sep="
 
 
 #1)CpG are in clusters 
-annotatePeaks.pl fisher_neb_undiff.txt hg38 > fisher_neb_undiff.anno
+annotatePeaks.pl fisher_neb_undiff.txt hg38 -annStats fisher_neb_undiff.stats > fisher_neb_undiff.anno #0.007735281
 more fisher_neb_undiff.anno |cut -f9|grep CpG|wc -l # 1116
 more fisher_neb_undiff.anno |cut -f9|wc -l # 144274
 
-annotatePeaks.pl fisher_neb_diff.txt hg38 > fisher_neb_undiff.anno
+annotatePeaks.pl fisher_neb_diff.txt hg38 > fisher_neb_diff.anno #0.009707245
+more fisher_neb_diff.anno |cut -f9|grep CpG|wc -l # 13955
+more fisher_neb_diff.anno |cut -f9|wc -l # 1437586
 # R
-dmc=read.table("DMC_fisher.txt",sep="\t",stringsAsFactors=F)
+dmc=read.table("fisher_neb_diff.txt",sep="\t",stringsAsFactors=F)
 options(scipen=999)
 par(mfrow=c(3,2))
 chr=c(paste("chr",1:22,sep=""),"chrX","chrY")
@@ -36,7 +38,7 @@ for(i in 1:length(chr)){
   difference=diff(dmc[ix,2])
   position=dmc[ix,2]
   position=position[-length(position)]
-  plot(position,log10(difference),xlab="Chromosome position",ylab="Log10 DMC interdistance",main=chr[i],col=adjustcolor("black",alpha=.004))
+  plot(position,log10(difference),xlab="Chromosome position",ylab="Log10 DMC interdistance",main=chr[i],col=adjustcolor("black",alpha=.006))
   plot(density(log10(difference)),main=chr[i])
   ploty=ploty+1
   
@@ -57,6 +59,7 @@ for(i in 1:length(chr)){
 #6)Methylation profiles on ATAC-seq 
 #7)Methylation profiles on NICE-Seq peaks (2,500 cells) 
 #8)Perform histone mark heatmap profiles
+
 #9)Intersection between Hypo methylated cpgs after P53-KO vs Hypomethylated after 5az treatment
 #10)Steph's HCT116 atac-seq great analysis (Only promoters and complete set).
 
