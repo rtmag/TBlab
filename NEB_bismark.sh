@@ -34,7 +34,7 @@
 -1 P007_48h_doxo_1.fq.gz \
 -2 P007_48h_doxo_2.fq.gz
 
-~/myPrograms/Bismark/bismark --bowtie2 --multicore 64 \
+~/myPrograms/Bismark/bismark --bowtie2 --multicore 5 \
 /root/resources/HCT116_bs/ \
 -1 TP53del_48h_doxo_1.fq.gz \
 -2 TP53del_48h_doxo_2.fq.gz
