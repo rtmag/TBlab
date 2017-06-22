@@ -60,7 +60,14 @@ for(i in 1:length(chr)){
 #7)Methylation profiles on NICE-Seq peaks (2,500 cells) 
 #8)Perform histone mark heatmap profiles
 
+awk -F"\t" '{print $1"\t"$2"\t"$2+1}' fisher_neb_diff.txt > fisher_neb_diff.bed
+
+computeMatrix reference-point \
+-S atac.bw P53_Venkata.bw P53_24h_doxo_s1.bw P53_48h_doxo_s1.bw H3K27ac.bw H3K4me1.bw H3K4me3.bw H3K9me3.bw H3K36me3.bw \
+-R fisher_neb_diff.bed \
+--missingDataAsZero --sortRegions descend -bs 1 -a 1000 -b 1000 -p max -out diff_all_descend.mat
+
 #9)Intersection between Hypo methylated cpgs after P53-KO vs Hypomethylated after 5az treatment
 #10)Steph's HCT116 atac-seq great analysis (Only promoters and complete set).
-macs2 callpeak -t atac_steph1_Aligned.sortedByCoord.out.bam -f BAMPE -n hct116_atac -g hs --broad --keep-dup all
+macs2 callpeak -t atac_steph1_Aligned.sortedByCoord.out.bam -f BAMPE -n hct116_atac_ -g hs --broad --keep-dup all -q 
 
