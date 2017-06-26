@@ -61,11 +61,16 @@ for(i in 1:length(chr)){
 #8)Perform histone mark heatmap profiles
 
 awk -F"\t" '{print $1"\t"$2"\t"$2+1}' fisher_neb_diff.txt > fisher_neb_diff.bed
+awk -F"\t" '{print $1"\t"$2"\t"$2+1}' fisher_neb_undiff.txt > fisher_neb_undiff.bed
 
 computeMatrix reference-point \
 -S atac.bw P53_Venkata.bw P53_24h_doxo_s1.bw P53_48h_doxo_s1.bw H3K27ac.bw H3K4me1.bw H3K4me3.bw H3K9me3.bw H3K36me3.bw \
 -R fisher_neb_diff.bed \
 --missingDataAsZero --sortRegions descend -bs 1 -a 1000 -b 1000 -p max -out diff_all_descend.mat
+
+
+computeMatrix reference-point -S atac.bw P53_Venkata.bw P53_24h_doxo_s1.bw P53_48h_doxo_s1.bw H3K27ac.bw H3K4me1.bw H3K4me3.bw H3K9me3.bw H3K36me3.bw -R fisher_neb_undiff.bed --missingDataAsZero --sortRegions descend -bs 1 -a 1000 -b 1000 -p max -out undiff_all_descend.mat
+
 
 #9)Intersection between Hypo methylated cpgs after P53-KO vs Hypomethylated after 5az treatment
 #10)Steph's HCT116 atac-seq great analysis (Only promoters and complete set).
