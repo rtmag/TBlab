@@ -52,3 +52,7 @@ bamCoverage -p max -bs 1 -e 200 --normalizeUsingRPKM -b H3K27ac_rmdup_sort.bam -
 samtools index atac_steph1_Aligned.sortedByCoord.out.bam
 bamCoverage -p max -bs 1 --normalizeUsingRPKM -b atac_steph1_Aligned.sortedByCoord.out.bam -o atac.bw
 #
+
+
+
+makeTagDirectory Macrophage-H3K4me1-ChIP-Seq/ s_1_sequence.align.sam  -format bam
