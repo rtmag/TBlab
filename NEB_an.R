@@ -71,6 +71,20 @@ computeMatrix reference-point \
 
 computeMatrix reference-point -S atac.bw P53_Venkata.bw P53_24h_doxo_s1.bw P53_48h_doxo_s1.bw H3K27ac.bw H3K4me1.bw H3K4me3.bw H3K9me3.bw H3K36me3.bw -R fisher_neb_undiff.bed --missingDataAsZero --sortRegions descend -bs 1 -a 1000 -b 1000 -p max -out undiff_all_descend.mat
 
+##
+samtools view -h H3K27ac_rmdup_sort.bam > H3K27ac_rmdup_sort.sam
+samtools view -h H3K36me3_rmdup_sort.bam > H3K36me3_rmdup_sort.sam
+samtools view -h H3K4me1_rmdup_sort.bam > H3K4me1_rmdup_sort.sam
+samtools view -h H3K4me3_rmdup_sort.bam > H3K4me3_rmdup_sort.sam
+samtools view -h H3K9me3_rmdup_sort.bam > H3K9me3_rmdup_sort.sam
+
+makeTagDirectory H3K27ac_ChIP-Seq/ H3K27ac_rmdup_sort.sam -format sam
+makeTagDirectory H3K36me3_ChIP-Seq/ H3K36me3_rmdup_sort.sam -format sam
+makeTagDirectory H3K4me1_ChIP-Seq/ H3K4me1_rmdup_sort.sam -format sam
+makeTagDirectory H3K4me3_ChIP-Seq/ H3K4me3_rmdup_sort.sam -format sam
+makeTagDirectory H3K9me3_ChIP-Seq/ H3K9me3_rmdup_sort.sam -format sam
+
+annotatePeaks.pl ARpeaks.txt hg38 -size 6000 -hist 25 -ghist -d H3K4me2-control/ H3K4me2-dht-16h/ > outputfile.txt
 
 #9)Intersection between Hypo methylated cpgs after P53-KO vs Hypomethylated after 5az treatment
 #10)Steph's HCT116 atac-seq great analysis (Only promoters and complete set).
