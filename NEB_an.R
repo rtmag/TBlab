@@ -81,8 +81,8 @@ samtools view -h H3K9me3_rmdup_sort.bam > H3K9me3_rmdup_sort.sam
 makeTagDirectory H3K27ac_ChIP-Seq/ H3K27ac_rmdup_sort.sam -format sam
 makeTagDirectory H3K36me3_ChIP-Seq/ H3K36me3_rmdup_sort.sam -format sam
 makeTagDirectory H3K4me1_ChIP-Seq/ H3K4me1_rmdup_sort.sam -format sam
-makeTagDirectory H3K4me3_ChIP-Seq/ H3K4me3_rmdup_sort.sam -format sam
-makeTagDirectory H3K9me3_ChIP-Seq/ H3K9me3_rmdup_sort.sam -format sam
+makeTagDirectory H3K4me3_ChIP-Seq/ H3K4me3_rmdup_sort.sam -format sam &
+makeTagDirectory H3K9me3_ChIP-Seq/ H3K9me3_rmdup_sort.sam -format sam &
 
 annotatePeaks.pl ARpeaks.txt hg38 -size 6000 -hist 25 -ghist -d H3K4me2-control/ H3K4me2-dht-16h/ > outputfile.txt
 
