@@ -77,14 +77,19 @@ samtools view -h H3K36me3_rmdup_sort.bam > H3K36me3_rmdup_sort.sam
 samtools view -h H3K4me1_rmdup_sort.bam > H3K4me1_rmdup_sort.sam
 samtools view -h H3K4me3_rmdup_sort.bam > H3K4me3_rmdup_sort.sam
 samtools view -h H3K9me3_rmdup_sort.bam > H3K9me3_rmdup_sort.sam
+samtools view -h H3K27me3_rmdup_sort.bam > H3K27me3_rmdup_sort.sam
+
+H3K27me3_rmdup_sort.bam
 
 makeTagDirectory H3K27ac_ChIP-Seq/ H3K27ac_rmdup_sort.sam -format sam
 makeTagDirectory H3K36me3_ChIP-Seq/ H3K36me3_rmdup_sort.sam -format sam
 makeTagDirectory H3K4me1_ChIP-Seq/ H3K4me1_rmdup_sort.sam -format sam
 makeTagDirectory H3K4me3_ChIP-Seq/ H3K4me3_rmdup_sort.sam -format sam &
 makeTagDirectory H3K9me3_ChIP-Seq/ H3K9me3_rmdup_sort.sam -format sam &
+makeTagDirectory H3K27me3_ChIP-Seq/ H3K27me3_rmdup_sort.sam -format sam
 
-annotatePeaks.pl ARpeaks.txt hg38 -size 6000 -hist 25 -ghist -d H3K4me2-control/ H3K4me2-dht-16h/ > outputfile.txt
+annotatePeaks.pl ~/heatmaps/fisher_neb_diff.bed hg38 -size -2000,2000 -hist 1 -ghist \
+-d H3K27ac_ChIP-Seq/ H3K27me3_ChIP-Seq/ H3K36me3_ChIP-Seq/ H3K4me1_ChIP-Seq/ H3K4me3_ChIP-Seq/ H3K9me3_ChIP-Seq/ > fisher_neb_diff.mat
 
 #9)Intersection between Hypo methylated cpgs after P53-KO vs Hypomethylated after 5az treatment
 #10)Steph's HCT116 atac-seq great analysis (Only promoters and complete set).
