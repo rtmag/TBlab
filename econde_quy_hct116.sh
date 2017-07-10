@@ -53,6 +53,8 @@ samtools index atac_steph1_Aligned.sortedByCoord.out.bam
 bamCoverage -p max -bs 1 --normalizeUsingRPKM -b atac_steph1_Aligned.sortedByCoord.out.bam -o atac.bw
 #
 
+java -jar ~/myPrograms/picard/build/libs/picard.jar MarkDuplicates REMOVE_DUPLICATES=true METRICS_FILE=atac_rmdup.txt INPUT=atac_steph1_Aligned.sortedByCoord.out.bam OUTPUT=atac_steph1_rmdup.bam
+samtools index atac_steph1_rmdup.bam
+bamCoverage -p max -bs 1 --normalizeUsingRPKM -b atac_steph1_rmdup.bam -o atac_rmdup.bw
 
 
-makeTagDirectory Macrophage-H3K4me1-ChIP-Seq/ s_1_sequence.align.sam  -format bam
