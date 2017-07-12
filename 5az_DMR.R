@@ -12,6 +12,8 @@ meth=unite(myobj, destrand=TRUE,mc.cores=40)
 pooled.meth=pool(meth,sample.ids=c("decitabine","control"))
 pooled.meth.cov=pooled.meth[as.logical(rowSums(getData(pooled.meth)[,c(5,8)]>5)),]
 pooled.myDiff=calculateDiffMeth(pooled.meth.cov,num.cores=40)
+ res=methSeg(pooled.myDiff,diagnostic.plot=TRUE,maxInt=100,minSeg=10)
+
 
 
 
