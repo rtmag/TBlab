@@ -14,11 +14,31 @@ pooled.meth.cov=pooled.meth[as.logical(rowSums(getData(pooled.meth)[,c(5,8)]>5))
 pooled.myDiff=calculateDiffMeth(pooled.meth.cov,num.cores=40)
  res=methSeg(pooled.myDiff,diagnostic.plot=TRUE,maxInt=100,minSeg=10)
 
+myDiff25p=getMethylDiff(pooled.myDiff,difference=25,qvalue=0.05)
+
+x=myDiff25p@.Data[[1]]
+chrNames=gsub("^","chr",x,perl=T)
+chrNames=gsub("chr23","chrX",chrNames,perl=T)
+chrNames=gsub("chr24","chrY",chrNames,perl=T)
+chrNames=gsub("chr25","chrM",chrNames,perl=T)
+myDiff25p@.Data[[1]]=chrNames
+myDiff25p=myDiff25p[as.numeric(x)<26,]
 
 
+res=methSeg(myDiff25p,diagnostic.plot=TRUE,maxInt=40,minSeg=10,segMedianT=67,-67)
+methSeg2bed(res,"FISHER_DMR.bed")
 
-pooledData=getData(pooled.meth.cov)
-fisher_neb=data.frame(pooled.myDiff,decitabine=(pooledData[,6]/pooledData[,5]),control=(pooledData[,9]/pooledData[,8]) ) 
+myDiff25p=getMethylDiff(pooled.myDiff,difference=25,qvalue=0.01)
+x=myDiff25p@.Data[[1]]
+chrNames=gsub("^","chr",x,perl=T)
+chrNames=gsub("chr23","chrX",chrNames,perl=T)
+chrNames=gsub("chr24","chrY",chrNames,perl=T)
+chrNames=gsub("chr25","chrM",chrNames,perl=T)
+myDiff25p@.Data[[1]]=chrNames
+myDiff25p=myDiff25p[as.numeric(x)<26,]
+
+write.table(myDiff25p,"fisher_neb_0.01.bed",quote=F,row.names=F,col.names=F,sep="\t")
+
 
 ####################################################
 library(methylKit)
