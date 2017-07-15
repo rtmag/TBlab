@@ -56,5 +56,17 @@ bamCoverage -p max -bs 1 --normalizeUsingRPKM -b atac_steph1_Aligned.sortedByCoo
 java -jar ~/myPrograms/picard/build/libs/picard.jar MarkDuplicates REMOVE_DUPLICATES=true METRICS_FILE=atac_rmdup.txt INPUT=atac_steph1_Aligned.sortedByCoord.out.bam OUTPUT=atac_steph1_rmdup.bam
 samtools index atac_steph1_rmdup.bam
 bamCoverage -p max -bs 1 --normalizeUsingRPKM -b atac_steph1_rmdup.bam -o atac_rmdup.bw
+##
 
+computeMatrix reference-point \
+-S atac_rmdup.bw P53_Venkata.bw P53_24h_doxo_s1.bw P53_48h_doxo_s1.bw H3K27ac.bw H3K4me1.bw H3K4me3.bw H3K27me3.bw H3K9me3.bw H3K36me3.bw \
+-R FISHER_DMR.bed --referencePoint center \
+--missingDataAsZero --sortRegions descend -bs 1 -a 2000 -b 2000 -p max -out FISHER_DMR.mat
 
+computeMatrix reference-point \
+-S atac_rmdup.bw P53_Venkata.bw P53_24h_doxo_s1.bw P53_48h_doxo_s1.bw H3K27ac.bw H3K4me1.bw H3K4me3.bw H3K27me3.bw H3K9me3.bw H3K36me3.bw \
+-R fisher_neb_0.01_+1.bed --referencePoint center \
+--missingDataAsZero --sortRegions descend -bs 1 -a 2000 -b 2000 -p max -out fisher_neb_0.01_+1.mat
+
+#
+plotHeatmap -m FISHER_DMR.mat -out FISHER_DMR.pdf
