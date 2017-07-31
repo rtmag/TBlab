@@ -68,5 +68,10 @@ computeMatrix reference-point \
 -R fisher_neb_0.01_+1.bed --referencePoint center \
 --missingDataAsZero --sortRegions descend -bs 1 -a 2000 -b 2000 -p max -out fisher_neb_0.01_+1.mat
 
+computeMatrix reference-point \
+-S atac_rmdup.bw P53_Venkata.bw P53_24h_doxo_s1.bw P53_48h_doxo_s1.bw H3K27ac.bw H3K4me1.bw H3K4me3.bw H3K27me3.bw H3K9me3.bw H3K36me3.bw \
+-R undiff_90meth_15diff.bed --referencePoint center \
+--missingDataAsZero --sortRegions descend -bs 1 -a 1000 -b 1000 -p max -out undiff_90meth_15diff.mat
+
 #
 plotHeatmap -m FISHER_DMR.mat -out FISHER_DMR.pdf
