@@ -14,6 +14,11 @@ pooled.meth.cov=pooled.meth[as.logical(rowSums(getData(pooled.meth)[,c(5,8)]>5))
 pooled.myDiff=calculateDiffMeth(pooled.meth.cov,num.cores=40)
  res=methSeg(pooled.myDiff,diagnostic.plot=TRUE,maxInt=100,minSeg=10)
 
+x=pooled.myDiff
+x=cbind(x,(getData(pooled.meth.cov)[,6]/getData(pooled.meth.cov)[,5]),(getData(pooled.meth.cov)[,9]/getData(pooled.meth.cov)[,8]))
+
+undiff=x[ x[,7]>(-25) & rowMeans(cbind(x[,8],x[,9]))>.650 & x[,6]>0.05,]
+
 myDiff25p=getMethylDiff(pooled.myDiff,difference=25,qvalue=0.05)
 
 x=myDiff25p@.Data[[1]]
@@ -39,7 +44,25 @@ myDiff25p=myDiff25p[as.numeric(x)<26,]
 
 write.table(myDiff25p,"fisher_neb_0.01.bed",quote=F,row.names=F,col.names=F,sep="\t")
 
+##
+undiff=x[ x[,7]>(-25) & rowMeans(cbind(x[,8],x[,9]))>.90,] 
+chrNames=gsub("^","chr",undiff[,1],perl=T)
+chrNames=gsub("chr23","chrX",chrNames,perl=T)
+chrNames=gsub("chr24","chrY",chrNames,perl=T)
+chrNames=gsub("chr25","chrM",chrNames,perl=T)
+undiff=undiff[as.numeric(undiff[,1])<26,]
+write.table(undiff,"undiff_90meth_25diff.bed",quote=F,row.names=F,col.names=F,sep="\t")
 
+
+undiff=x[ x[,7]>(-15) & rowMeans(cbind(x[,8],x[,9]))>.90,] 
+chrNames=gsub("^","chr",undiff[,1],perl=T)
+chrNames=gsub("chr23","chrX",chrNames,perl=T)
+chrNames=gsub("chr24","chrY",chrNames,perl=T)
+chrNames=gsub("chr25","chrM",chrNames,perl=T)
+undiff=undiff[as.numeric(undiff[,1])<26,]
+write.table(undiff,"undiff_90meth_15diff.bed",quote=F,row.names=F,col.names=F,sep="\t")
+
+#
 ####################################################
 library(methylKit)
 
