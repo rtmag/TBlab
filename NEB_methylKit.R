@@ -20,7 +20,7 @@ meth=unite(myobj, destrand=TRUE,mc.cores=40)
 
 #Pooled
 pooled.meth=pool(meth,sample.ids=c("decitabine","control"))
-pooled.meth=filterByCoverage(pooled.meth,lo.count=5)
+pooled.meth=filterByCoverage(pooled.meth,lo.count=3)
 pooled.myDiff=calculateDiffMeth(pooled.meth,num.cores=40)
 
 
