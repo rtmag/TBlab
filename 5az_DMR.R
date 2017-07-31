@@ -52,6 +52,7 @@ chrNames=gsub("chr23","chrX",chrNames,perl=T)
 chrNames=gsub("chr24","chrY",chrNames,perl=T)
 chrNames=gsub("chr25","chrM",chrNames,perl=T)
 undiff[,1]=chrNames
+undiff[,3]=undiff[,3]+1
 write.table(undiff,"undiff_90meth_25diff.bed",quote=F,row.names=F,col.names=F,sep="\t")
 
 
@@ -62,6 +63,7 @@ chrNames=gsub("chr23","chrX",chrNames,perl=T)
 chrNames=gsub("chr24","chrY",chrNames,perl=T)
 chrNames=gsub("chr25","chrM",chrNames,perl=T)
 undiff[,1]=chrNames
+undiff[,3]=undiff[,3]+1
 write.table(undiff,"undiff_90meth_15diff.bed",quote=F,row.names=F,col.names=F,sep="\t")
 
 #
