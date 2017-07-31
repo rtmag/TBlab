@@ -46,20 +46,22 @@ write.table(myDiff25p,"fisher_neb_0.01.bed",quote=F,row.names=F,col.names=F,sep=
 
 ##
 undiff=x[ x[,7]>(-25) & rowMeans(cbind(x[,8],x[,9]))>.90,] 
+undiff=undiff[as.numeric(undiff[,1])<26,]
 chrNames=gsub("^","chr",undiff[,1],perl=T)
 chrNames=gsub("chr23","chrX",chrNames,perl=T)
 chrNames=gsub("chr24","chrY",chrNames,perl=T)
 chrNames=gsub("chr25","chrM",chrNames,perl=T)
-undiff=undiff[as.numeric(undiff[,1])<26,]
+undiff[,1]=chrNames
 write.table(undiff,"undiff_90meth_25diff.bed",quote=F,row.names=F,col.names=F,sep="\t")
 
 
 undiff=x[ x[,7]>(-15) & rowMeans(cbind(x[,8],x[,9]))>.90,] 
+undiff=undiff[as.numeric(undiff[,1])<26,]
 chrNames=gsub("^","chr",undiff[,1],perl=T)
 chrNames=gsub("chr23","chrX",chrNames,perl=T)
 chrNames=gsub("chr24","chrY",chrNames,perl=T)
 chrNames=gsub("chr25","chrM",chrNames,perl=T)
-undiff=undiff[as.numeric(undiff[,1])<26,]
+undiff[,1]=chrNames
 write.table(undiff,"undiff_90meth_15diff.bed",quote=F,row.names=F,col.names=F,sep="\t")
 
 #
