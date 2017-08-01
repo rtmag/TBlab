@@ -25,8 +25,9 @@ pooled.myDiff=calculateDiffMeth(pooled.meth,num.cores=40)
 
 
 # Calculate Differential methylation
-cov.meth=filterByCoverage(meth,lo.count=5)
-cov.myDiff=calculateDiffMeth(cov.meth,num.cores=40)
+cov.myobj=filterByCoverage(myobj,lo.count=3)
+meth=unite(cov.myobj, destrand=TRUE,mc.cores=40)
+cov.myDiff=calculateDiffMeth(meth,num.cores=40)
 #
 
 ###FISHER
