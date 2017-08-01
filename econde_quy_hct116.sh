@@ -74,4 +74,24 @@ computeMatrix reference-point \
 --missingDataAsZero --sortRegions descend -bs 1 -a 1000 -b 1000 -p max -out undiff_90meth_15diff.mat
 
 #
-plotHeatmap -m FISHER_DMR.mat -out FISHER_DMR.pdf
+cat diff_30diff_qval01.bed > diff_undiff.bed
+echo '# Differentially Methylated' >> diff_undiff.bed
+cat undiff_90meth_15diff.bed >> diff_undiff.bed
+echo '# Non-differentially Methylated' >> diff_undiff.bed
+#
+computeMatrix reference-point \
+-S atac_rmdup.bw  \
+-R diff_undiff.bed --referencePoint center \
+--missingDataAsZero --sortRegions descend -bs 1 -a 1000 -b 1000 -p max -out atac_diff_undiff.mat
+
+plotHeatmap --xAxisLabel "" --refPointLabel "CpG" -m atac_diff_undiff.mat -out atac_diff_undiff.pdf
+#
+
+computeMatrix reference-point \
+-S atac_rmdup.bw P53_Venkata.bw P53_24h_doxo_s1.bw P53_48h_doxo_s1.bw H3K27ac.bw H3K4me1.bw H3K4me3.bw H3K27me3.bw H3K9me3.bw H3K36me3.bw  \
+-R diff_undiff.bed --referencePoint center \
+--missingDataAsZero --sortRegions descend -bs 1 -a 1000 -b 1000 -p max -out diff_undiff.mat
+
+plotHeatmap --xAxisLabel "" --refPointLabel "CpG" -m diff_undiff.mat -out diff_undiff.pdf
+
+
