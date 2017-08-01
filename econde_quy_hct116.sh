@@ -94,4 +94,10 @@ computeMatrix reference-point \
 
 plotHeatmap --xAxisLabel "" --refPointLabel "CpG" -m diff_undiff.mat -out diff_undiff.pdf
 
+computeMatrix reference-point \
+-S atac_rmdup.bw P53_Venkata.bw P53_24h_doxo_s1.bw P53_48h_doxo_s1.bw H3K27ac.bw H3K4me1.bw H3K4me3.bw H3K27me3.bw H3K9me3.bw H3K36me3.bw  \
+-R diff_undiff.bed --referencePoint center \
+--sortRegions descend -bs 1 -a 1000 -b 1000 -p max -out diff_undiff_z.mat
+
+plotHeatmap --xAxisLabel "" --refPointLabel "CpG" -m diff_undiff_z.mat -out diff_undiff_z.pdf
 
