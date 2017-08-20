@@ -36,3 +36,13 @@ macs2 callpeak -f BAMPE -g mm --call-summits --nolambda --buffer-size 1000000 -q
 macs2 callpeak -f BAMPE -g mm --call-summits --buffer-size 1000000 -q 0.0001 -t ATAC-20k_S1_Aligned.sortedByCoord.out.bam -n ATAC_s1_fdr0001 &
 macs2 callpeak -f BAMPE -g mm --call-summits --buffer-size 1000000 -q 0.0001 -t ATAC-20k_S2_Aligned.sortedByCoord.out.bam -n ATAC_s2_fdr0001 &
 #
+
+
+macs2 callpeak -f BAMPE -g mm --call-summits --buffer-size 1000000 -q 0.00001 -t ATAC-20k_S1_Aligned.sortedByCoord.out.bam -n ATAC_s1_fdr00001 &
+macs2 callpeak -f BAMPE -g mm --call-summits --buffer-size 1000000 -q 0.00001 -t ATAC-20k_S2_Aligned.sortedByCoord.out.bam -n ATAC_s2_fdr00001 &
+#
+
+
+macs2 callpeak -f BAMPE -g mm --call-summits --buffer-size 1000000 -q 0.000001 -t ATAC-20k_S1_Aligned.sortedByCoord.out.bam -n ATAC_s1_fdr000001 &
+macs2 callpeak -f BAMPE -g mm --call-summits --buffer-size 1000000 -q 0.000001 -t ATAC-20k_S2_Aligned.sortedByCoord.out.bam -n ATAC_s2_fdr000001 &
+#
