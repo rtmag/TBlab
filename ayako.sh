@@ -47,3 +47,7 @@ macs2 callpeak -f BAMPE -g mm --call-summits --buffer-size 1000000 -q 0.000001 -
 macs2 callpeak -f BAMPE -g mm --call-summits --buffer-size 1000000 -q 0.000001 -t ATAC-20k_S2_Aligned.sortedByCoord.out.bam -n ATAC_s2_fdr000001 &
 #
 
+bamCoverage -b ATAC-20k_S1_Aligned.sortedByCoord.out.bam -p max --normalizeUsingRPKM --binSize 1 --ignoreDuplicates -o ATAC-20k_S1.bw
+bamCoverage -b ATAC-20k_S2_Aligned.sortedByCoord.out.bam -p max --normalizeUsingRPKM --binSize 1 --ignoreDuplicates -o ATAC-20k_S2.bw
+##
+#
