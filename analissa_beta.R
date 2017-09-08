@@ -120,5 +120,8 @@ legend("topleft",legend=c("EBV POS","EBV NEG","PTLD","IC-DLBCL"),fill=c("green",
               
                         
                         
-     beta_swx)                   
-                        
+dmc=anno[which( rownames(anno) %in% rownames(beta_swx) ),c(1,2)]                        
+dmc[,1]=gsub("^","chr",dmc[,1],)
+dmc=cbind(dmc,dmc[,2]+1)
+rownames(dmc)=NULL                        
+write.table(dmc,"dmc.bed",quote=F,row.names=F,col.names=F,sep="\t")                        
