@@ -82,9 +82,6 @@ colu_noTrash=colu[!(colu[,2]=="TRASH"),]
 nano_table=table(colu_noTrash[,2])
 ngs_table=table(colu_noTrash[,1])
 
-#ngs_table=c(ngs_table[1:3],0,ngs_table[4])
-#names(ngs_table)=c("Deletion","Duplication","Inversion","Novel Insertion","Translocation")
-
 #pdf("PLOT.R")
 par(mfrow=c(1,2))
 barplot(ngs_table,border=NA,col="salmon",main="NGS",ylim=c(0,250))
