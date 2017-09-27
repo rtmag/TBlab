@@ -209,3 +209,20 @@ awk -F"\t" '{ \
   if($1=='48'){print "chr14_GL000194v1\t"$2"\t"$3"\t"$4} \
   if($1=='49'){print "chr14_KI270723v1\t"$2"\t"$3"\t"$4} \
 }' > ctr_2.bedGraph &
+
+##############################
+~/myPrograms/kentUtils/bin/bedGraphToBigWig ctr_1.bedGraph ~/resources/hg38.chrom.sizes ctr1.bw &
+~/myPrograms/kentUtils/bin/bedGraphToBigWig ctr_2.bedGraph ~/resources/hg38.chrom.sizes ctr2.bw &
+~/myPrograms/kentUtils/bin/bedGraphToBigWig dec_1.bedGraph ~/resources/hg38.chrom.sizes dec1.bw &
+~/myPrograms/kentUtils/bin/bedGraphToBigWig dec_2.bedGraph ~/resources/hg38.chrom.sizes dec2.bw &
+#
+
+computeMatrix reference-point \
+-S ctr1.bw ctr2.bw dec1.bw dec2.bw   \
+-R ~/ATAC-seq/NA_summits.bed --referencePoint center \
+--missingDataAsZero --sortRegions descend -bs 10 -a 4000 -b 4000 -p max -out atac_summit_meth.mat
+
+plotHeatmap --xAxisLabel "" --refPointLabel "atac_summit" -m atac_summit_meth.mat -out atac_summit_meth.pdf
+###
+
+Rscript epicseg.R getcounts -m 
