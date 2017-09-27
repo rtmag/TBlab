@@ -220,9 +220,9 @@ awk -F"\t" '{ \
 computeMatrix reference-point \
 -S ctr1.bw ctr2.bw dec1.bw dec2.bw   \
 -R ~/ATAC-seq/NA_summits.bed --referencePoint center \
---missingDataAsZero --sortRegions descend -bs 10 -a 4000 -b 4000 -p max -out atac_summit_meth.mat
+--missingDataAsZero --sortRegions descend -bs 100 -a 4000 -b 4000 -p max -out atac_summit_meth.mat
 
-plotHeatmap --xAxisLabel "" --refPointLabel "atac_summit" -m atac_summit_meth.mat -out atac_summit_meth.pdf
+plotHeatmap --xAxisLabel "" --yMax 1 --zMax 1 --refPointLabel "atac_summit" -m atac_summit_meth.mat -out atac_summit_meth.pdf
 ###
 
 Rscript epicseg.R getcounts -m 
