@@ -101,3 +101,31 @@ computeMatrix reference-point \
 
 plotHeatmap --xAxisLabel "" --refPointLabel "CpG" -m diff_undiff_z.mat -out diff_undiff_z.pdf
 
+##########
+######
+###
+##
+
+STAR --genomeDir ~/resources/star_hg38_overhang100/ \
+--readFilesCommand zcat \
+--runThreadN 45 \
+--alignIntronMax 1 \
+--alignEndsType EndToEnd \
+--readFilesIn ENCFF000PBW.fastq.gz \
+--outSAMtype BAM SortedByCoordinate \
+--outFileNamePrefix ./input1_
+
+
+STAR --genomeDir ~/resources/star_hg38_overhang100/ \
+--readFilesCommand zcat \
+--runThreadN 45 \
+--alignIntronMax 1 \
+--alignEndsType EndToEnd \
+--readFilesIn ENCFF000PBY.fastq.gz \
+--outSAMtype BAM SortedByCoordinate \
+--outFileNamePrefix ./input2_
+
+##########
+######
+###
+##
