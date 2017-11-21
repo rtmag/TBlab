@@ -126,6 +126,13 @@ STAR --genomeDir ~/resources/star_hg38_overhang100/ \
 --outFileNamePrefix ./input2_
 
 ##########
-######
-###
+samtools merge input.bam input1_Aligned.sortedByCoord.out.bam input2_Aligned.sortedByCoord.out.bam
+java -jar ~/myPrograms/picard/build/libs/picard.jar MarkDuplicates REMOVE_DUPLICATES=true METRICS_FILE=input.txt INPUT=input.bam OUTPUT=input_rmdup.bam
 ##
+#
+
+macs2 callpeak -t /root/HCT116_histone_modification_Quy/STAR_alignment/bam/H3K4me1_rmdup_sort.bam -c /root/HCT116_histone_modification_Quy/raw_data/input/input_rmdup.bam -g hs --broad -q 0.01 --outdir /root/HCT116_histone_modification_Quy/STAR_alignment/peakcalls -n H3K4me1_ &
+macs2 callpeak -t /root/HCT116_histone_modification_Quy/STAR_alignment/bam/H3K4me3_rmdup_sort.bam -c /root/HCT116_histone_modification_Quy/raw_data/input/input_rmdup.bam -g hs --broad -q 0.01 --outdir /root/HCT116_histone_modification_Quy/STAR_alignment/peakcalls -n H3K4me3_ &
+macs2 callpeak -t /root/HCT116_histone_modification_Quy/STAR_alignment/bam/H3K27ac_rmdup_sort.bam -c /root/HCT116_histone_modification_Quy/raw_data/input/input_rmdup.bam -g hs --broad -q 0.01 --outdir /root/HCT116_histone_modification_Quy/STAR_alignment/peakcalls -n H3K27ac_ &
+#
+#
