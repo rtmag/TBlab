@@ -6,7 +6,7 @@
 ##############################
 ##############################
 
-/root/myPrograms/STAR/bin/STAR --genomeDir /root/star_index/STAR_mm10_nogtf/ \
+/root/myPrograms/STAR/bin/STAR --genomeDir /root/resources/mm10/ \
 _overhang100 \
 --readFilesCommand zcat \
 --runThreadN 35 \
@@ -17,7 +17,7 @@ _overhang100 \
 --outSAMtype BAM SortedByCoordinate \
 --outFileNamePrefix /root/ayako/ayako_dejavu/bam/CD41+_untr_1_
 
-/root/myPrograms/STAR/bin/STAR --genomeDir /root/star_index/STAR_mm10_nogtf/ \
+/root/myPrograms/STAR/bin/STAR --genomeDir /root/resources/mm10/ \
 _overhang100 \
 --readFilesCommand zcat \
 --runThreadN 35 \
@@ -28,7 +28,7 @@ _overhang100 \
 --outSAMtype BAM SortedByCoordinate \
 --outFileNamePrefix /root/ayako/ayako_dejavu/bam/CD41+_untr_2_
 
-/root/myPrograms/STAR/bin/STAR --genomeDir /root/star_index/STAR_mm10_nogtf/ \
+/root/myPrograms/STAR/bin/STAR --genomeDir /root/resources/mm10/ \
 _overhang100 \
 --readFilesCommand zcat \
 --runThreadN 35 \
@@ -40,7 +40,7 @@ _overhang100 \
 --outFileNamePrefix /root/ayako/ayako_dejavu/bam/CD41+_untr_3_
 ##############################
 ##############################
-/root/myPrograms/STAR/bin/STAR --genomeDir /root/star_index/STAR_mm10_nogtf/ \
+/root/myPrograms/STAR/bin/STAR --genomeDir /root/resources/mm10/ \
 _overhang100 \
 --readFilesCommand zcat \
 --runThreadN 35 \
@@ -51,7 +51,7 @@ _overhang100 \
 --outSAMtype BAM SortedByCoordinate \
 --outFileNamePrefix /root/ayako/ayako_dejavu/bam/CD41+_tr_1_
 
-/root/myPrograms/STAR/bin/STAR --genomeDir /root/star_index/STAR_mm10_nogtf/ \
+/root/myPrograms/STAR/bin/STAR --genomeDir /root/resources/mm10/ \
 _overhang100 \
 --readFilesCommand zcat \
 --runThreadN 35 \
@@ -62,7 +62,7 @@ _overhang100 \
 --outSAMtype BAM SortedByCoordinate \
 --outFileNamePrefix /root/ayako/ayako_dejavu/bam/CD41+_tr_2_
 
-/root/myPrograms/STAR/bin/STAR --genomeDir /root/star_index/STAR_mm10_nogtf/ \
+/root/myPrograms/STAR/bin/STAR --genomeDir /root/resources/mm10/ \
 _overhang100 \
 --readFilesCommand zcat \
 --runThreadN 35 \
@@ -74,7 +74,7 @@ _overhang100 \
 --outFileNamePrefix /root/ayako/ayako_dejavu/bam/CD41-_tr_1_
 
 
-/root/myPrograms/STAR/bin/STAR --genomeDir /root/star_index/STAR_mm10_nogtf/ \
+/root/myPrograms/STAR/bin/STAR --genomeDir /root/resources/mm10/ \
 _overhang100 \
 --readFilesCommand zcat \
 --runThreadN 35 \
