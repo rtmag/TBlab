@@ -1,5 +1,5 @@
-/root/myPrograms/STAR/bin/STAR --runThreadN 50 --runMode genomeGenerate --genomeDir /root/resources/mm10/ \
---genomeFastaFiles /root/resources/mm10.fasta 
+/root/myPrograms/STAR/bin/STAR --runThreadN 35 --runMode genomeGenerate --genomeDir /root/resources/mm10/ \
+--genomeFastaFiles /root/resources/mm10/mm10.fasta 
 
 ##############################
 ##############################
