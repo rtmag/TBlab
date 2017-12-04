@@ -143,3 +143,17 @@ bamCoverage -p max -bs 1 --normalizeUsingRPKM -b /root/ayako/ayako_dejavu/bam/CD
 ##############################
 ##############################
 
+samtools merge -f -h /root/ayako/ayako_dejavu/bam/CD41+_untr_1_Aligned_rmdup.sortedByCoord.out.bam /root/ayako/ayako_dejavu/bam/CD41+_untr.bam \
+/root/ayako/ayako_dejavu/bam/CD41+_untr_1_Aligned_rmdup.sortedByCoord.out.bam /root/ayako/ayako_dejavu/bam/CD41+_untr_2_Aligned_rmdup.sortedByCoord.out.bam \
+/root/ayako/ayako_dejavu/bam/CD41+_untr_3_Aligned_rmdup.sortedByCoord.out.bam &
+
+samtools merge -f -h /root/ayako/ayako_dejavu/bam/CD41+_tr_1_Aligned_rmdup.sortedByCoord.out.bam /root/ayako/ayako_dejavu/bam/CD41+_tr.bam \
+/root/ayako/ayako_dejavu/bam/CD41+_tr_1_Aligned_rmdup.sortedByCoord.out.bam /root/ayako/ayako_dejavu/bam/CD41+_tr_2_Aligned_rmdup.sortedByCoord.out.bam &
+
+samtools merge -f -h /root/ayako/ayako_dejavu/bam/CD41-_tr_1_Aligned_rmdup.sortedByCoord.out.bam /root/ayako/ayako_dejavu/bam/CD41-_tr.bam \
+/root/ayako/ayako_dejavu/bam/CD41-_tr_1_Aligned_rmdup.sortedByCoord.out.bam /root/ayako/ayako_dejavu/bam/CD41-_tr_2_Aligned_rmdup.sortedByCoord.out.bam &
+##
+##
+
+
+
