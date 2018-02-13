@@ -35,7 +35,7 @@ samtools index CD41-_untr_2_Aligned_rmdup.sortedByCoord.out.bam &
 samtools merge -f -h CD41-_untr_1_Aligned_rmdup.sortedByCoord.out.bam CD41-_untr_merged.bam \
 CD41-_untr_1_Aligned_rmdup.sortedByCoord.out.bam CD41-_untr_2_Aligned_rmdup.sortedByCoord.out.bam 
 
-macs2 callpeak -t /root/ayako/ayako_dejavu/bam/CD41-_untr.bam -f BAMPE --keep-dup all --nomodel --broad -g hs -q 0.05 --outdir . -n CD41-_untr_fdr5 &
+macs2 callpeak -t CD41-_untr.bam -f BAMPE --keep-dup all --nomodel --broad -g hs -q 0.05 --outdir . -n CD41-_untr_fdr5 
 #
 
 #
