@@ -21,6 +21,24 @@ _overhang100 \
 --outSAMtype BAM SortedByCoordinate \
 --outFileNamePrefix /root/bam/ATAC-20k_S2_
 
+#
+
+java -jar /root/myPrograms/picard/build/libs/picard.jar MarkDuplicates REMOVE_DUPLICATES=true I=ATAC-20k_S1_Aligned.sortedByCoord.out.bam \
+O=CD41-_untr_1_Aligned_rmdup.sortedByCoord.out.bam M=CD41-_untr_1.mfile
+
+java -jar /root/myPrograms/picard/build/libs/picard.jar MarkDuplicates REMOVE_DUPLICATES=true I=ATAC-20k_S2_Aligned.sortedByCoord.out.bam \
+O=CD41-_untr_2_Aligned_rmdup.sortedByCoord.out.bam M=CD41-_untr_2.mfile
+
+samtools index CD41-_untr_1_Aligned_rmdup.sortedByCoord.out.bam
+samtools index CD41-_untr_2_Aligned_rmdup.sortedByCoord.out.bam
+
+samtools merge -f -h CD41-_untr_1_Aligned_rmdup.sortedByCoord.out.bam CD41-_untr_merged.bam \
+CD41-_untr_1_Aligned_rmdup.sortedByCoord.out.bam CD41-_untr_2_Aligned_rmdup.sortedByCoord.out.bam 
+
+macs2 callpeak -t /root/ayako/ayako_dejavu/bam/CD41-_untr.bam -f BAMPE --keep-dup all --nomodel --broad -g hs -q 0.05 --outdir . -n CD41-_untr_fdr5 &
+#
+
+#
 # Genome track file
 macs2 callpeak -f BAMPE -g mm --call-summits --nolambda --buffer-size 1000000 -q 0.001 -t ATAC-20k_S1_Aligned.sortedByCoord.out.bam -n ATAC_s1 &
 macs2 callpeak -f BAMPE -g mm --call-summits --nolambda --buffer-size 1000000 -q 0.001 -t ATAC-20k_S2_Aligned.sortedByCoord.out.bam -n ATAC_s2 &
