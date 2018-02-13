@@ -29,8 +29,8 @@ O=CD41-_untr_1_Aligned_rmdup.sortedByCoord.out.bam M=CD41-_untr_1.mfile
 java -jar /root/myPrograms/picard/build/libs/picard.jar MarkDuplicates REMOVE_DUPLICATES=true I=ATAC-20k_S2_Aligned.sortedByCoord.out.bam \
 O=CD41-_untr_2_Aligned_rmdup.sortedByCoord.out.bam M=CD41-_untr_2.mfile
 
-samtools index CD41-_untr_1_Aligned_rmdup.sortedByCoord.out.bam
-samtools index CD41-_untr_2_Aligned_rmdup.sortedByCoord.out.bam
+samtools index CD41-_untr_1_Aligned_rmdup.sortedByCoord.out.bam &
+samtools index CD41-_untr_2_Aligned_rmdup.sortedByCoord.out.bam &
 
 samtools merge -f -h CD41-_untr_1_Aligned_rmdup.sortedByCoord.out.bam CD41-_untr_merged.bam \
 CD41-_untr_1_Aligned_rmdup.sortedByCoord.out.bam CD41-_untr_2_Aligned_rmdup.sortedByCoord.out.bam 
