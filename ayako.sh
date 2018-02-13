@@ -37,7 +37,7 @@ CD41-_untr_1_Aligned_rmdup.sortedByCoord.out.bam CD41-_untr_2_Aligned_rmdup.sort
 
 macs2 callpeak -t CD41-_untr_merged.bam -f BAMPE --keep-dup all --nomodel --broad -g hs -q 0.05 --outdir . -n CD41-_untr_fdr5 
 
-bamCoverage -p max -bs 1 --normalizeUsingRPKM -b CD41-_untr_1_Aligned_rmdup.sortedByCoord.out.bam -o CD41-_tr_1.bw
+bamCoverage -p max -bs 1 --normalizeUsingRPKM -b CD41-_untr_1_Aligned_rmdup.sortedByCoord.out.bam -o CD41-_untr_1.bw
 bamCoverage -p max -bs 1 --normalizeUsingRPKM -b CD41-_untr_2_Aligned_rmdup.sortedByCoord.out.bam -o CD41-_untr_2.bw
 #
 
