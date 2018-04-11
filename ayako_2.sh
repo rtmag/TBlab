@@ -155,12 +155,12 @@ samtools merge -f -h /root/ayako/ayako_dejavu/bam/CD41-_tr_1_Aligned_rmdup.sorte
 ##
 ##
 
-macs2 callpeak -t /root/ayako/ayako_dejavu/bam/CD41+_untr.bam -f BAMPE --keep-dup all --nomodel --broad -g hs --outdir /root/ayako/ayako_dejavu/peakcall -n CD41+_untr &
-macs2 callpeak -t /root/ayako/ayako_dejavu/bam/CD41+_tr.bam -f BAMPE --keep-dup all --nomodel --broad -g hs --outdir /root/ayako/ayako_dejavu/peakcall -n CD41+_tr &
-macs2 callpeak -t /root/ayako/ayako_dejavu/bam/CD41-_tr.bam -f BAMPE --keep-dup all --nomodel --broad -g hs --outdir /root/ayako/ayako_dejavu/peakcall -n CD41-_tr &
+macs2 callpeak -t /root/ayako/ayako_dejavu/bam/CD41+_untr.bam -f BAMPE --keep-dup all --nomodel --broad -g mm --outdir /root/ayako/ayako_dejavu/peakcall -n CD41+_untr &
+macs2 callpeak -t /root/ayako/ayako_dejavu/bam/CD41+_tr.bam -f BAMPE --keep-dup all --nomodel --broad -g mm --outdir /root/ayako/ayako_dejavu/peakcall -n CD41+_tr &
+macs2 callpeak -t /root/ayako/ayako_dejavu/bam/CD41-_tr.bam -f BAMPE --keep-dup all --nomodel --broad -g mm --outdir /root/ayako/ayako_dejavu/peakcall -n CD41-_tr &
 ##
-macs2 callpeak -t /root/ayako/ayako_dejavu/bam/CD41+_untr.bam -f BAMPE --keep-dup all --nomodel --broad -g hs -q 0.05 --outdir /root/ayako/ayako_dejavu/peakcall -n CD41+_untr_fdr5 &
-macs2 callpeak -t /root/ayako/ayako_dejavu/bam/CD41+_tr.bam -f BAMPE --keep-dup all --nomodel --broad -g hs -q 0.05 --outdir /root/ayako/ayako_dejavu/peakcall -n CD41+_tr_fdr5 &
-macs2 callpeak -t /root/ayako/ayako_dejavu/bam/CD41-_tr.bam -f BAMPE --keep-dup all --nomodel --broad -g hs -q 0.05 --outdir /root/ayako/ayako_dejavu/peakcall -n CD41-_tr_fdr5 &
+macs2 callpeak -t /root/ayako/ayako_dejavu/bam/CD41+_untr.bam -f BAMPE --keep-dup all --nomodel --broad -g mm -q 0.05 --outdir /root/ayako/ayako_dejavu/peakcall -n CD41+_untr_fdr5 &
+macs2 callpeak -t /root/ayako/ayako_dejavu/bam/CD41+_tr.bam -f BAMPE --keep-dup all --nomodel --broad -g mm -q 0.05 --outdir /root/ayako/ayako_dejavu/peakcall -n CD41+_tr_fdr5 &
+macs2 callpeak -t /root/ayako/ayako_dejavu/bam/CD41-_tr.bam -f BAMPE --keep-dup all --nomodel --broad -g mm -q 0.05 --outdir /root/ayako/ayako_dejavu/peakcall -n CD41-_tr_fdr5 &
 ##
 #
