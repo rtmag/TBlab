@@ -2,14 +2,14 @@
 
 computeMatrix reference-point \
 -S \
-/root/ong_dukenus/chip-seq/bw/sh143_input_1.bw \
-/root/ong_dukenus/chip-seq/bw/sh400-input_1.bw \
-/root/ong_dukenus/chip-seq/bw/shNT-input_1.bw \
--R /root/resources/hg19_tss_knownCanonical_noUnasembled.bed --referencePoint center \
---sortRegions descend -bs 20 -a 2000 -b 2000 -p max -out mnaseseq.mat
+HL-60_ActD_smoothed.qnor.bigWig \
+HL-60_DMSO_smoothed.qnor.bigWig \
+HL-60_DRB_smoothed.qnor.bigWig \
+-R hg38_tss_knownCanonical.bed --referencePoint center \
+--sortRegions descend -bs 20 -a 2000 -b 2000 -p max -out h2_mnase.mat
 
 
 plotHeatmap --xAxisLabel "" --yAxisLabel "" --refPointLabel "TSS" --colorMap Blues \
--m mnaseseq.mat --regionsLabel "genes" \
- --samplesLabel "sh143" "sh400" "shNT" \
--out mnaseseq20.pdf
+-m h2_mnase.mat --regionsLabel "genes" \
+ --samplesLabel "HL-60_ActD" "HL-60_DMSO" "HL-60_DRB" \
+-out h2_mnase.pdf
