@@ -65,3 +65,13 @@ plotHeatmap --xAxisLabel "" --yAxisLabel "" --refPointLabel "TSS" \
 
 
 ###########################################################################################################
+computeMatrix reference-point \
+-S \
+/root/quy/ach2az/HL-60_DMSO_acH2AZ_chrEDIT.bigwig \
+/root/quy/h2az/HL-60_DMSO_H2AZ.bw \
+/root/quy/ach2az/HL-60_ActD_acH2AZ_chrEDIT.bigwig \
+/root/quy/h2az/HL-60_ActD_H2AZ.bw \
+/root/quy/ach2az/HL-60_DRB_acH2AZ_chrEDIT.bigwig \
+/root/quy/h2az/HL-60_DRB_H2AZ.bw \
+-R ../hg38_tss_filteredbyRPKM.bed --referencePoint center --outFileSortedRegions hg38_tss_filteredbyRPKM_sorted.bed \
+--sortRegions descend -bs 20 -a 2000 -b 2000 -p max -out h2az_20bp_2kb_CPM.mat
