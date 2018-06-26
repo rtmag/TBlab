@@ -105,16 +105,16 @@ plotHeatmap --xAxisLabel "" --yAxisLabel "" --refPointLabel "TSS" \
 --colorMap Greens Reds Blues \
 -m ach2azOnly_20bp_2kb_CPM.mat --regionsLabel "genes" \
  --samplesLabel "acH2AZ DMSO" "acH2AZ ActD" "acH2AZ DRB" \
--out ach2azOnly_20bp_2kb_CPM.pdf
+-out ach2azOnly_20bp_2kb_CPM.svg
 
 plotHeatmap --xAxisLabel "" --yAxisLabel "" --refPointLabel "TSS" \
 --colorMap Greens Reds Blues \
 -m h2azOnly_20bp_2kb_CPM.mat --regionsLabel "genes" \
  --samplesLabel "H2AZ DMSO" "H2AZ ActD" "H2AZ DRB" \
--out h2azOnly_20bp_2kb_CPM.pdf
+-out h2azOnly_20bp_2kb_CPM.svg
 
 plotHeatmap --xAxisLabel "" --yAxisLabel "" --refPointLabel "TSS" \
 --colorMap Greens Reds Blues \
 -m h2azOnly_20bp_2kb_QNORM.mat --regionsLabel "genes" \
  --samplesLabel "H2AZ DMSO" "H2AZ ActD" "H2AZ DRB" \
--out h2azOnly_20bp_2kb_QNORM.pdf
+-out h2azOnly_20bp_2kb_QNORM.svg
