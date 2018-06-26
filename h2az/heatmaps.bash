@@ -75,3 +75,46 @@ computeMatrix reference-point \
 /root/quy/h2az/HL-60_DRB_H2AZ.bw \
 -R ../hg38_tss_filteredbyRPKM.bed --referencePoint center --outFileSortedRegions hg38_tss_filteredbyRPKM_sorted.bed \
 --sortRegions descend -bs 20 -a 2000 -b 2000 -p max -out h2az_20bp_2kb_CPM.mat
+###########################################################################################################
+# Ac
+computeMatrix reference-point \
+-S \
+/root/quy/ach2az/HL-60_DMSO_acH2AZ_chrEDIT.bigwig \
+/root/quy/ach2az/HL-60_ActD_acH2AZ_chrEDIT.bigwig \
+/root/quy/ach2az/HL-60_DRB_acH2AZ_chrEDIT.bigwig \
+-R hg38_tss_filteredbyRPKM_sorted.bed --referencePoint center \
+--sortRegions keep -bs 20 -a 2000 -b 2000 -p max -out ach2azOnly_20bp_2kb_CPM.mat
+# H2 CPM
+computeMatrix reference-point \
+-S \
+/root/quy/h2az/HL-60_DMSO_H2AZ.bw \
+/root/quy/h2az/HL-60_ActD_H2AZ.bw \
+/root/quy/h2az/HL-60_DRB_H2AZ.bw \
+-R hg38_tss_filteredbyRPKM_sorted.bed --referencePoint center \
+--sortRegions keep -bs 20 -a 2000 -b 2000 -p max -out h2azOnly_20bp_2kb_CPM.mat
+# H2 Q MNASE
+computeMatrix reference-point \
+-S \
+/root/quy/HL-60_DMSO_smoothed.qnor.bigWig \
+/root/quy/HL-60_ActD_smoothed.qnor.bigWig \
+/root/quy/HL-60_DRB_smoothed.qnor.bigWig \
+-R hg38_tss_filteredbyRPKM_sorted.bed --referencePoint center \
+--sortRegions keep -bs 20 -a 2000 -b 2000 -p max -out h2azOnly_20bp_2kb_QNORM.mat
+###########################################################################################################
+plotHeatmap --xAxisLabel "" --yAxisLabel "" --refPointLabel "TSS" \
+--colorList "white,#00BA38" "white,#F8766D" "white,#619CFF" \
+-m ach2azOnly_20bp_2kb_CPM.mat --regionsLabel "genes" \
+ --samplesLabel "acH2AZ DMSO" "acH2AZ ActD" "acH2AZ DRB" \
+-out ach2azOnly_20bp_2kb_CPM.pdf
+
+plotHeatmap --xAxisLabel "" --yAxisLabel "" --refPointLabel "TSS" \
+--colorList "white,#00BA38" "white,#F8766D" "white,#619CFF" \
+-m h2azOnly_20bp_2kb_CPM.mat --regionsLabel "genes" \
+ --samplesLabel "H2AZ DMSO" "H2AZ ActD" "H2AZ DRB" \
+-out h2azOnly_20bp_2kb_CPM.pdf
+
+plotHeatmap --xAxisLabel "" --yAxisLabel "" --refPointLabel "TSS" \
+--colorList "white,#00BA38" "white,#F8766D" "white,#619CFF" \
+-m h2azOnly_20bp_2kb_QNORM.mat --regionsLabel "genes" \
+ --samplesLabel "H2AZ DMSO" "H2AZ ActD" "H2AZ DRB" \
+-out h2azOnly_20bp_2kb_QNORM.pdf
