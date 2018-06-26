@@ -42,7 +42,7 @@ rpkm = rpkm[ix,]
 
 log_rpkm =log2(rpkm+1)
 
-png("RPKM_sortedBy_CHIPSEQ_Intensity.png")
+postscript("RPKM_sortedBy_CHIPSEQ_Intensity.ps")
 par(mfrow=c(3,1))
 plot(log_rpkm[,2],ylim=c(0,9), xaxt='n',xlab="",yaxt='n',ylab=expression('Log'[2]*' RPKM') ,las=2,main="DMSO")#,type="l",lwd=11)
 axis(side=2,labels = c(0,4,8) ,at=c(0,4,8),lwd.ticks=3,srt = 45, las = 2)
@@ -54,7 +54,7 @@ plot(log_rpkm[,3],ylim=c(0,9), xaxt='n',xlab="",yaxt='n',ylab=expression('Log'[2
 axis(side=2,labels = c(0,4,8) ,at=c(0,4,8),lwd.ticks=3,srt = 45, las = 2)
 dev.off()
 
-pdf("RPKM_sortedBy_RPKM_Intensity.pdf")
+postscript("RPKM_sortedBy_RPKM_Intensity.ps")
 par(mfrow=c(3,1))
 plot(sort(log_rpkm[,2]),ylim=c(0,9), xaxt='n',xlab="",yaxt='n',ylab=expression('Log'[2]*' RPKM') ,las=2,main="DMSO")#,type="l",lwd=11)
 axis(side=2,labels = c(0,4,8) ,at=c(0,4,8),lwd.ticks=3,srt = 45, las = 2)
