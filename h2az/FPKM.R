@@ -32,7 +32,7 @@ tss = tss[tss[,4] %in% rpkm,]
 tss_num = table(tss[,4])
 tss_num = tss_num[tss_num > 1]
 tss_filtered = tss[!(tss[,4] %in% names(tss_num)), ]
-write.table(tss_filtered,"hg38_tss_filteredbyRPKM.bed",quote=F,sep="\t",col.names=T,row.names=T)
+write.table(tss_filtered,"hg38_tss_filteredbyRPKM.bed",quote=F,sep="\t",col.names=F,row.names=F)
 ############################################################################################
 rpkm = x_rpkm
 
