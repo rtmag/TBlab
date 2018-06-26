@@ -102,19 +102,19 @@ computeMatrix reference-point \
 --sortRegions keep -bs 20 -a 2000 -b 2000 -p max -out h2azOnly_20bp_2kb_QNORM.mat
 ###########################################################################################################
 plotHeatmap --xAxisLabel "" --yAxisLabel "" --refPointLabel "TSS" \
---colorList "white,#00BA38" "white,#F8766D" "white,#619CFF" \
+--colorMap Greens Reds Blues \
 -m ach2azOnly_20bp_2kb_CPM.mat --regionsLabel "genes" \
  --samplesLabel "acH2AZ DMSO" "acH2AZ ActD" "acH2AZ DRB" \
 -out ach2azOnly_20bp_2kb_CPM.pdf
 
 plotHeatmap --xAxisLabel "" --yAxisLabel "" --refPointLabel "TSS" \
---colorList "white,#00BA38" "white,#F8766D" "white,#619CFF" \
+--colorMap Greens Reds Blues \
 -m h2azOnly_20bp_2kb_CPM.mat --regionsLabel "genes" \
  --samplesLabel "H2AZ DMSO" "H2AZ ActD" "H2AZ DRB" \
 -out h2azOnly_20bp_2kb_CPM.pdf
 
 plotHeatmap --xAxisLabel "" --yAxisLabel "" --refPointLabel "TSS" \
---colorList "white,#00BA38" "white,#F8766D" "white,#619CFF" \
+--colorMap Greens Reds Blues \
 -m h2azOnly_20bp_2kb_QNORM.mat --regionsLabel "genes" \
  --samplesLabel "H2AZ DMSO" "H2AZ ActD" "H2AZ DRB" \
 -out h2azOnly_20bp_2kb_QNORM.pdf
