@@ -58,7 +58,7 @@ computeMatrix reference-point \
 --sortRegions descend -bs 1 -a 4000 -b 4000 -p max -out h2az_1bp_4kb_CPM.mat
 
 plotHeatmap --xAxisLabel "" --yAxisLabel "" --refPointLabel "TSS" \
---colorList "white,#00BA38" "white,#00BA38" "white,#F8766D" "white,#F8766D" "white,#619CFF" "white,#619CFF"
+--colorList "white,#00BA38" "white,#00BA38" "white,#F8766D" "white,#F8766D" "white,#619CFF" "white,#619CFF" \
 -m h2az_1bp_4kb_CPM.mat --regionsLabel "genes" \
  --samplesLabel "acH2AZ DMSO" "H2AZ DMSO" "acH2AZ ActD" "H2AZ ActD" "acH2AZ DRB" "H2AZ DRB" \
 -out h2az_1bp_4kb_CPM.pdf
