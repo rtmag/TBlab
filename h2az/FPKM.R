@@ -38,3 +38,7 @@ rpkm = x_rpkm
 
 log_rpkm =log2(rpkm+1)
 
+
+plot(sort(log_rpkm[,1]),ylim=c(0,8), xaxt='n',xlab="",yaxt='n',ylab=expression('Log'[2]*' RPKM') ,las=2,type="l",lwd=11)
+axis(side=2,labels = c(0,4,8) ,at=c(0,4,8),lwd.ticks=3,srt = 45, las = 2)
+
