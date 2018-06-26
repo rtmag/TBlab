@@ -34,11 +34,34 @@ tss_num = tss_num[tss_num > 1]
 tss_filtered = tss[!(tss[,4] %in% names(tss_num)), ]
 write.table(tss_filtered,"hg38_tss_filteredbyRPKM.bed",quote=F,sep="\t",col.names=F,row.names=F)
 ############################################################################################
-rpkm = x_rpkm
+rpkm = read.csv("rpkm_wt_hl-60_all.csv",row.names=1)
+tss = read.table("hg38_tss_filteredbyRPKM_sorted.bed",sep="\t",header=F,stringsAsFactors=F)
+
+ix = match( tss[,4], rownames(rpkm))
+rpkm = rpkm[ix,]
 
 log_rpkm =log2(rpkm+1)
 
-
-plot(sort(log_rpkm[,1]),ylim=c(0,8), xaxt='n',xlab="",yaxt='n',ylab=expression('Log'[2]*' RPKM') ,las=2,type="l",lwd=11)
+png("RPKM_sortedBy_CHIPSEQ_Intensity.png")
+par(mfrow=c(3,1))
+plot(log_rpkm[,2],ylim=c(0,9), xaxt='n',xlab="",yaxt='n',ylab=expression('Log'[2]*' RPKM') ,las=2,main="DMSO")#,type="l",lwd=11)
 axis(side=2,labels = c(0,4,8) ,at=c(0,4,8),lwd.ticks=3,srt = 45, las = 2)
 
+plot(log_rpkm[,1],ylim=c(0,9), xaxt='n',xlab="",yaxt='n',ylab=expression('Log'[2]*' RPKM') ,las=2,main="ActD")#,type="l",lwd=11)
+axis(side=2,labels = c(0,4,8) ,at=c(0,4,8),lwd.ticks=3,srt = 45, las = 2)
+
+plot(log_rpkm[,3],ylim=c(0,9), xaxt='n',xlab="",yaxt='n',ylab=expression('Log'[2]*' RPKM') ,las=2,main="DRB")#,type="l",lwd=11)
+axis(side=2,labels = c(0,4,8) ,at=c(0,4,8),lwd.ticks=3,srt = 45, las = 2)
+dev.off()
+
+pdf("RPKM_sortedBy_RPKM_Intensity.pdf")
+par(mfrow=c(3,1))
+plot(sort(log_rpkm[,2]),ylim=c(0,9), xaxt='n',xlab="",yaxt='n',ylab=expression('Log'[2]*' RPKM') ,las=2,main="DMSO")#,type="l",lwd=11)
+axis(side=2,labels = c(0,4,8) ,at=c(0,4,8),lwd.ticks=3,srt = 45, las = 2)
+
+plot(sort(log_rpkm[,1]),ylim=c(0,9), xaxt='n',xlab="",yaxt='n',ylab=expression('Log'[2]*' RPKM') ,las=2,main="ActD")#,type="l",lwd=11)
+axis(side=2,labels = c(0,4,8) ,at=c(0,4,8),lwd.ticks=3,srt = 45, las = 2)
+
+plot(sort(log_rpkm[,3]),ylim=c(0,9), xaxt='n',xlab="",yaxt='n',ylab=expression('Log'[2]*' RPKM') ,las=2,main="DRB")#,type="l",lwd=11)
+axis(side=2,labels = c(0,4,8) ,at=c(0,4,8),lwd.ticks=3,srt = 45, las = 2)
+dev.off()
