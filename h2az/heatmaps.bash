@@ -48,20 +48,20 @@ grep -v -P "chrKI|chrGL" HL-60_DRB_acH2AZ_chrEDIT2.wig > HL-60_DRB_acH2AZ_chrEDI
 ###########################################################################################################
 computeMatrix reference-point \
 -S \
-/root/quy/ach2az/HL-60_ActD_acH2AZ.bw \
-/root/quy/h2az/HL-60_ActD_H2AZ.bw \
-/root/quy/ach2az/HL-60_DMSO_acH2AZ.bw \
+/root/quy/ach2az/HL-60_DMSO_acH2AZ_chrEDIT.bigwig \
 /root/quy/h2az/HL-60_DMSO_H2AZ.bw \
-/root/quy/ach2az/HL-60_DRB_acH2AZ.bw \
+/root/quy/ach2az/HL-60_ActD_acH2AZ_chrEDIT.bigwig \
+/root/quy/h2az/HL-60_ActD_H2AZ.bw \
+/root/quy/ach2az/HL-60_DRB_acH2AZ_chrEDIT.bigwig \
 /root/quy/h2az/HL-60_DRB_H2AZ.bw \
 -R hg38_tss_filteredbyRPKM.bed --referencePoint center --outFileSortedRegions hg38_tss_filteredbyRPKM_sorted.bed \
---sortRegions descend -bs 1 -a 4000 -b 4000 -p max -out h2az_1bp_4kb.mat
+--sortRegions descend -bs 1 -a 4000 -b 4000 -p max -out h2az_1bp_4kb_CPM.mat
 
-
-plotHeatmap --xAxisLabel "" --yAxisLabel "" --refPointLabel "TSS" --colorMap Blues \
--m h2_mnase.mat --regionsLabel "genes" \
- --samplesLabel "HL-60_ActD" "HL-60_DMSO" "HL-60_DRB" \
--out h2_mnase.pdf
+plotHeatmap --xAxisLabel "" --yAxisLabel "" --refPointLabel "TSS" \
+--colorList "white,#00BA38" "white,#00BA38" "white,#F8766D" "white,#F8766D" "white,#619CFF" "white,#619CFF"
+-m h2az_1bp_4kb_CPM.mat --regionsLabel "genes" \
+ --samplesLabel "acH2AZ DMSO" "H2AZ DMSO" "acH2AZ ActD" "H2AZ ActD" "acH2AZ DRB" "H2AZ DRB" \
+-out h2az_1bp_4kb_CPM.pdf
 
 
 ###########################################################################################################
