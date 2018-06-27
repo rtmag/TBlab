@@ -118,3 +118,12 @@ plotHeatmap --xAxisLabel "" --yAxisLabel "" --refPointLabel "TSS" \
 -m h2azOnly_20bp_2kb_QNORM.mat --regionsLabel "genes" \
  --samplesLabel "H2AZ DMSO" "H2AZ ActD" "H2AZ DRB" \
 -out h2azOnly_20bp_2kb_QNORM.svg
+
+
+###########################################################################################################
+
+
+ --perGroup
+ 
+ 
+ 
