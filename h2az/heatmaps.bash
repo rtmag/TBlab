@@ -83,7 +83,8 @@ computeMatrix reference-point \
 /root/quy/ach2az/HL-60_ActD_acH2AZ_chrEDIT.bigwig \
 /root/quy/ach2az/HL-60_DRB_acH2AZ_chrEDIT.bigwig \
 -R hg38_tss_filteredbyRPKM_sorted.bed --referencePoint center \
---sortRegions keep -bs 1 -a 4000 -b 4000 -p max -out ach2azOnly_1bp_4kb_CPM.mat
+--sortRegions keep -bs 20 -a 2000 -b 2000 -p max -out ach2azOnly_20bp_2kb_CPM.mat \
+--outFileNameMatrix ach2azOnly_20bp_2kb_CPM.rmat
 # H2 CPM
 #computeMatrix reference-point \
 #-S \
@@ -99,7 +100,8 @@ computeMatrix reference-point \
 /root/quy/HL-60_ActD_smoothed.qnor.bigWig \
 /root/quy/HL-60_DRB_smoothed.qnor.bigWig \
 -R hg38_tss_filteredbyRPKM_sorted.bed --referencePoint center \
---sortRegions keep -bs 1 -a 4000 -b 4000 -p max -out h2azOnly_1bp_4kb_QNORM.mat
+--sortRegions keep -bs 20 -a 2000 -b 2000 -p max -out h2azOnly_20bp_2kb_QNORM.mat \
+--outFileNameMatrix h2azOnly_20bp_2kb_QNORM.rmat
 ###########################################################################################################
 plotHeatmap --xAxisLabel "" --yAxisLabel "" --refPointLabel "TSS" \
 --colorMap Blues Reds Greens \
