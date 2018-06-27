@@ -40,7 +40,7 @@ tss = read.table("hg38_tss_filteredbyRPKM_sorted.bed",sep="\t",header=F,stringsA
 ix = match( tss[,4], rownames(rpkm))
 rpkm = rpkm[ix,]
 
-log_rpkm =log2(rpkm+1)
+log_rpkm =asinh(rpkm)
 
 postscript("RPKM_sortedBy_CHIPSEQ_Intensity.ps")
 par(mfrow=c(3,1))
