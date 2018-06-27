@@ -125,9 +125,9 @@ pdfjam ach2azOnly_20bp_2kb_CPM.pdf h2azOnly_20bp_2kb_QNORM.pdf --nup 2x1 --lands
 plotProfile -m ach2azOnly_20bp_2kb_CPM.mat \
  --samplesLabel "acH2AZ DRB" "acH2AZ ActD" "acH2AZ DMSO" \
 --colors "#619CFF" "#F8766D" "#00BA38" \
--out ach2azOnly_20bp_2kb_CPM_profile.pdf --perGroup 
+-out ach2azOnly_20bp_2kb_CPM_profile.svg --perGroup 
  
  plotProfile -m h2azOnly_20bp_2kb_QNORM.mat \
  --samplesLabel "H2AZ DRB" "H2AZ ActD" "H2AZ DMSO" \
 --colors "#619CFF" "#F8766D" "#00BA38" \
--out h2azOnly_20bp_2kb_QNORM_profile.pdf --perGroup 
+-out h2azOnly_20bp_2kb_QNORM_profile.svg --perGroup 
