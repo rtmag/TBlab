@@ -144,9 +144,21 @@ plotProfile -m ach2azOnly_20bp_2kb_CPM.mat \
 
 computeMatrix reference-point \
 -S \
-ach2_ActD.bigwig \
 ach2_DMSO.bigwig \
+ach2_ActD.bigwig \
 ach2_DRB.bigwig \
--R hg38_tss_filteredbyRPKM_sorted.bed --referencePoint center \
+-R /root/quy/heatmap/hg38_tss_filteredbyRPKM_sorted.bed --referencePoint center \
 --sortRegions keep -bs 20 -a 2000 -b 2000 -p max -out h2azOnly_20bp_2kb_QNORM.mat \
 --outFileNameMatrix ach2azOnly_20bp_2kb_QNORM.rmat
+
+plotHeatmap --xAxisLabel "" --yAxisLabel "" --refPointLabel "TSS" \
+--colorMap Blues Reds Greens \
+-m ach2azOnly_20bp_2kb_QNORM.mat --regionsLabel "genes" \
+ --samplesLabel "acH2AZ DRB" "acH2AZ ActD" "acH2AZ DMSO" \
+-out ach2azOnly_20bp_2kb_QNORM.pdf
+
+plotProfile -m ach2azOnly_20bp_2kb_QNORM.mat \
+ --samplesLabel "acH2AZ DRB" "acH2AZ ActD" "acH2AZ DMSO" \
+--colors "#619CFF" "#F8766D" "#00BA38" \
+-out ach2azOnly_20bp_2kb_QNORM.pdf --perGroup --refPointLabel "TSS"
+ 
