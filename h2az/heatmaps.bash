@@ -160,5 +160,5 @@ plotHeatmap --xAxisLabel "" --yAxisLabel "" --refPointLabel "TSS" \
 plotProfile -m ach2azOnly_20bp_2kb_QNORM.mat \
  --samplesLabel "acH2AZ DRB" "acH2AZ ActD" "acH2AZ DMSO" \
 --colors "#619CFF" "#F8766D" "#00BA38" \
--out ach2azOnly_20bp_2kb_QNORM.pdf --perGroup --refPointLabel "TSS"
+-out ach2azOnly_20bp_2kb_QNORM_profile.pdf --perGroup --refPointLabel "TSS"
  
