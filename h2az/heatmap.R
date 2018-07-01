@@ -1,6 +1,6 @@
 h2az = read.table(pipe("grep -v -P '#|genes' h2azOnly_20bp_2kb_QNORM.rmat"),sep="\t")
 
-ach2az = read.table(pipe("grep -v -P '#|genes' ach2azOnly_20bp_2kb_CPM.rmat"),sep="\t")
+ach2az = read.table(pipe("tail -n +4 ach2azOnly_20bp_2kb_QNORM.rmat"),sep="\t")
 #########################################################################################################################
 # 95% confidence interval
 h2_DRB=colMeans(h2az)[1:200]
@@ -42,7 +42,7 @@ dev.off()
 c.min=min(ac_DRB_conf,ac_ACTD_conf,ac_DMSO_conf)
 c.max=max(ac_DRB_conf,ac_ACTD_conf,ac_DMSO_conf)
    
-pdf("acH2AZ_profile_95confInterval.pdf")
+svg("acH2AZ_profile_95confInterval.svg")
 plot(ac_DRB,type="l",ylim=c(c.min,c.max),xaxt='n',xlab="",ylab="CPM Normalized acH2AZ ChIP-Seq Tags",col='#619CFF',lwd=3)
 Axis(side=1, labels=c("-2 KB","TSS","2 KB"),at=c(1,97,200))
 polygon( c(1:200,rev(c(1:200)) ),c(ac_DRB_conf[1,],rev(ac_DRB_conf[2,])), col = alpha('#619CFF',.3), border = NA)
