@@ -133,3 +133,10 @@ plotProfile -m ach2azOnly_20bp_2kb_CPM.mat \
  --samplesLabel "H2AZ DRB" "H2AZ ActD" "H2AZ DMSO" \
 --colors "#619CFF" "#F8766D" "#00BA38" \
 -out h2azOnly_20bp_2kb_QNORM_profile.pdf --perGroup --refPointLabel "TSS"
+
+#############################################################################################################
+
+
+~/myPrograms/kentUtils/bin/wigToBigWig HL-60_ActD_acH2AZ_chrEDIT3.wig ~/resources/hg38.chrom.sizes HL-60_ActD_acH2AZ_chrEDIT.bigwig &
+~/myPrograms/kentUtils/bin/wigToBigWig HL-60_DMSO_acH2AZ_chrEDIT3.wig ~/resources/hg38.chrom.sizes HL-60_DMSO_acH2AZ_chrEDIT.bigwig &
+~/myPrograms/kentUtils/bin/wigToBigWig HL-60_DRB_acH2AZ_chrEDIT3.wig ~/resources/hg38.chrom.sizes HL-60_DRB_acH2AZ_chrEDIT.bigwig &
