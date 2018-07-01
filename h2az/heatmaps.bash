@@ -148,7 +148,7 @@ ach2_DMSO.bigwig \
 ach2_ActD.bigwig \
 ach2_DRB.bigwig \
 -R /root/quy/heatmap/hg38_tss_filteredbyRPKM_sorted.bed --referencePoint center \
---sortRegions keep -bs 20 -a 2000 -b 2000 -p max -out h2azOnly_20bp_2kb_QNORM.mat \
+--sortRegions keep -bs 20 -a 2000 -b 2000 -p max -out ach2azOnly_20bp_2kb_QNORM.mat \
 --outFileNameMatrix ach2azOnly_20bp_2kb_QNORM.rmat
 
 plotHeatmap --xAxisLabel "" --yAxisLabel "" --refPointLabel "TSS" \
