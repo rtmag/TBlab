@@ -137,6 +137,16 @@ plotProfile -m ach2azOnly_20bp_2kb_CPM.mat \
 #############################################################################################################
 
 
-~/myPrograms/kentUtils/bin/wigToBigWig HL-60_ActD_acH2AZ_chrEDIT3.wig ~/resources/hg38.chrom.sizes HL-60_ActD_acH2AZ_chrEDIT.bigwig &
-~/myPrograms/kentUtils/bin/wigToBigWig HL-60_DMSO_acH2AZ_chrEDIT3.wig ~/resources/hg38.chrom.sizes HL-60_DMSO_acH2AZ_chrEDIT.bigwig &
-~/myPrograms/kentUtils/bin/wigToBigWig HL-60_DRB_acH2AZ_chrEDIT3.wig ~/resources/hg38.chrom.sizes HL-60_DRB_acH2AZ_chrEDIT.bigwig &
+/home/rtm/myprograms/kentUtils/bin/linux.x86_64/wigToBigWig -clip home_rtm_CSI_quy_ach2az_wigs_ach2_ActD.qnor.wig /home/rtm/CSI/quy/h2az/hg38.chrom.sizes ach2_ActD.bigwig &
+/home/rtm/myprograms/kentUtils/bin/linux.x86_64/wigToBigWig -clip home_rtm_CSI_quy_ach2az_wigs_ach2_DMSO.qnor.wig /home/rtm/CSI/quy/h2az/hg38.chrom.sizes ach2_DMSO.bigwig &
+/home/rtm/myprograms/kentUtils/bin/linux.x86_64/wigToBigWig -clip home_rtm_CSI_quy_ach2az_wigs_ach2_DRB.qnor.wig /home/rtm/CSI/quy/h2az/hg38.chrom.sizes ach2_DRB.bigwig &
+#############################################################################################################
+
+computeMatrix reference-point \
+-S \
+ach2_ActD.bigwig \
+ach2_DMSO.bigwig \
+ach2_DRB.bigwig \
+-R hg38_tss_filteredbyRPKM_sorted.bed --referencePoint center \
+--sortRegions keep -bs 20 -a 2000 -b 2000 -p max -out h2azOnly_20bp_2kb_QNORM.mat \
+--outFileNameMatrix ach2azOnly_20bp_2kb_QNORM.rmat
