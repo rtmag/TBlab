@@ -162,3 +162,46 @@ plotProfile -m ach2azOnly_20bp_2kb_QNORM.mat \
 --colors "#619CFF" "#F8766D" "#00BA38" \
 -out ach2azOnly_20bp_2kb_QNORM_profile.pdf --perGroup --refPointLabel "TSS"
  
+#############################################################################################################
+# K MEANS
+
+plotHeatmap --xAxisLabel "" --yAxisLabel "" --refPointLabel "TSS" \
+--colorMap Blues Reds Greens \
+-m ach2azOnly_20bp_2kb_CPM.mat \
+ --samplesLabel "acH2AZ DRB" "acH2AZ ActD" "acH2AZ DMSO" \
+-out ach2azOnly_20bp_2kb_CPM_K4.pdf --kmeans 4  --sortRegions descend  --outFileSortedRegions hg38_TSS_K4_byAcH2AZ.bed
+################
+computeMatrix reference-point \
+-S \
+/root/quy/ach2az/HL-60_DMSO_acH2AZ_chrEDIT.bigwig \
+/root/quy/ach2az/HL-60_ActD_acH2AZ_chrEDIT.bigwig \
+/root/quy/ach2az/HL-60_DRB_acH2AZ_chrEDIT.bigwig \
+-R hg38_TSS_K4_byAcH2AZ.bed --referencePoint center \
+--sortRegions keep -bs 20 -a 2000 -b 2000 -p max -out ach2azOnly_20bp_2kb_CPM_hg38_TSS_K4_byAcH2AZ.mat \
+--outFileNameMatrix ach2azOnly_20bp_2kb_CPM_hg38_TSS_K4_byAcH2AZ.rmat
+ 
+computeMatrix reference-point \
+-S \
+/root/quy/HL-60_DMSO_smoothed.qnor.bigWig \
+/root/quy/HL-60_ActD_smoothed.qnor.bigWig \
+/root/quy/HL-60_DRB_smoothed.qnor.bigWig \
+-R hg38_TSS_K4_byAcH2AZ.bed --referencePoint center \
+--sortRegions keep -bs 20 -a 2000 -b 2000 -p max -out h2azOnly_20bp_2kb_CPM_hg38_TSS_K4_byAcH2AZ.mat \
+--outFileNameMatrix h2azOnly_20bp_2kb_CPM_hg38_TSS_K4_byAcH2AZ.rmat
+##########################
+
+plotHeatmap --xAxisLabel "" --yAxisLabel "" --refPointLabel "TSS" \
+--colorMap Blues Reds Greens \
+-m ach2azOnly_20bp_2kb_CPM_hg38_TSS_K4_byAcH2AZ.mat \
+ --samplesLabel "acH2AZ DRB" "acH2AZ ActD" "acH2AZ DMSO" \
+-out ach2azOnly_20bp_2kb_CPM_hg38_TSS_K4_byAcH2AZ.svg
+ 
+plotHeatmap --xAxisLabel "" --yAxisLabel "" --refPointLabel "TSS" \
+--colorMap Blues Reds Greens \
+-m h2azOnly_20bp_2kb_CPM_hg38_TSS_K4_byAcH2AZ.mat \
+ --samplesLabel "H2AZ DRB" "H2AZ ActD" "H2AZ DMSO" \
+-out h2azOnly_20bp_2kb_CPM_hg38_TSS_K4_byAcH2AZ.svg
+
+pdfjam ach2azOnly_20bp_2kb_CPM_hg38_TSS_K4_byAcH2AZ.pdf h2azOnly_20bp_2kb_CPM_hg38_TSS_K4_byAcH2AZ.pdf --nup 2x1 --landscape
+
+##########################
