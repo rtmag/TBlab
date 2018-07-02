@@ -234,6 +234,27 @@ samtools index DRB.bam &
 bamCoverage -p max -bs 1 --normalizeUsing CPM -b ActD.bam -o ActD.bw
 bamCoverage -p max -bs 1 --normalizeUsing CPM -b DMSO.bam -o DMSO.bw
 bamCoverage -p max -bs 1 --normalizeUsing CPM -b DRB.bam -o DRB.bw
+
+computeMatrix reference-point \
+-S \
+DMSO.bw \
+ActD.bw \
+DRB.bw \
+-R /root/quy/heatmap/hg38_TSS_K4_byAcH2AZ.bed --referencePoint center \
+--sortRegions keep -bs 20 -a 2000 -b 2000 -p max -out rnaseq_20bp_2kb_CPM_hg38_TSS_K4_byAcH2AZ.mat \
+--outFileNameMatrix rnaseq_20bp_2kb_CPM_hg38_TSS_K4_byAcH2AZ.rmat
+
+plotHeatmap --xAxisLabel "" --yAxisLabel "" --refPointLabel "TSS" \
+--colorMap Blues Reds Greens \
+-m rnaseq_20bp_2kb_CPM_hg38_TSS_K4_byAcH2AZ.mat \
+ --samplesLabel "RNA-Seq DRB" "RNA-Seq ActD" "RNA-Seq DMSO" \
+-out rnaseq_20bp_2kb_CPM_hg38_TSS_K4_byAcH2AZ.pdf
+
+plotHeatmap --xAxisLabel "" --yAxisLabel "" --refPointLabel "TSS" \
+--colorMap Blues Reds Greens \
+-m rnaseq_20bp_2kb_CPM_hg38_TSS_K4_byAcH2AZ.mat \
+ --samplesLabel "RNA-Seq DRB" "RNA-Seq ActD" "RNA-Seq DMSO" \
+-out rnaseq_20bp_2kb_CPM_hg38_TSS_K4_byAcH2AZ.svg
 ###
 ##
 #
