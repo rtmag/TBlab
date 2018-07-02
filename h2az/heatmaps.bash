@@ -205,3 +205,35 @@ plotHeatmap --xAxisLabel "" --yAxisLabel "" --refPointLabel "TSS" \
 pdfjam ach2azOnly_20bp_2kb_CPM_hg38_TSS_K4_byAcH2AZ.pdf h2azOnly_20bp_2kb_CPM_hg38_TSS_K4_byAcH2AZ.pdf --nup 2x1 --landscape
 
 ##########################
+
+samtools view -h HL-60_ActD/Aligned.sortedByCoord.out.bam |\
+sed -e '/^@SQ/s/SN\:/SN\:chr/' -e '/^[^@]/s/\t/\tchr/2'|\
+awk -F ' ' '$7=($7=="=" || $7=="*"?$7:sprintf("chr%s",$7))' |\
+tr " " "\t" > ActD.sam
+
+samtools view -h HL-60_DMSO/Aligned.sortedByCoord.out.bam |\
+sed -e '/^@SQ/s/SN\:/SN\:chr/' -e '/^[^@]/s/\t/\tchr/2'|\
+awk -F ' ' '$7=($7=="=" || $7=="*"?$7:sprintf("chr%s",$7))' |\
+tr " " "\t" > DMSO.sam
+
+samtools view -h HL-60_DRB/Aligned.sortedByCoord.out.bam |\
+sed -e '/^@SQ/s/SN\:/SN\:chr/' -e '/^[^@]/s/\t/\tchr/2'|\
+awk -F ' ' '$7=($7=="=" || $7=="*"?$7:sprintf("chr%s",$7))' |\
+tr " " "\t" > DRB.sam
+#
+
+samtools view -Sb ActD.sam > ActD.bam &
+samtools view -Sb DMSO.sam > DMSO.bam &
+samtools view -Sb DRB.sam > DRB.bam &
+
+samtools index ActD.bam &
+samtools index DMSO.bam &
+samtools index DRB.bam &
+
+
+bamCoverage -p max -bs 1 --normalizeUsing CPM -b ActD.bam -o ActD.bw
+bamCoverage -p max -bs 1 --normalizeUsing CPM -b DMSO.bam -o DMSO.bw
+bamCoverage -p max -bs 1 --normalizeUsing CPM -b DRB.bam -o DRB.bw
+###
+##
+#
