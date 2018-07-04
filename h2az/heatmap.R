@@ -139,6 +139,14 @@ abline(a=0,b=1)
 dev.off()
                    
 ######################
+#Read in files
+library(graphics)
+library(RColorBrewer)
+                   
+h2az = read.table(pipe("grep -v '#' h2azOnly_20bp_2kb_QNORM.rmat|grep -v 'genes'"),sep="\t")
+
+ach2az = read.table(pipe("grep -v '#' ach2azOnly_20bp_2kb_CPM.rmat|grep -v 'genes'"),sep="\t")
+
 brewer.pal(11, "RdYlBu")
 
 
@@ -150,12 +158,13 @@ brewer.pal(11, "RdYlBu")
 #           "#A50026", "#A50026", "#A50026", "#A50026","#A50026", "#A50026", "#A50026", "#A50026","#A50026", "#A50026", "#A50026") 
 #pdf("scatterplots_mediumSaturatingColor.pdf")
 #svg("scatterplots_mediumSaturatingColor.svg")
-#buylrd <- c("#313695", "#4575B4", "#74ADD1", "#ABD9E9", "#E0F3F8", "#FFFFBF", "#FEE090", "#FDAE61", "#F46D43", "#D73027", "#A50026",
-#            "#A50026", "#A50026", "#A50026", "#A50026","#A50026", "#A50026", "#A50026", "#A50026","#A50026", "#A50026", "#A50026",
-#           "#A50026", "#A50026", "#A50026", "#A50026","#A50026", "#A50026", "#A50026", "#A50026","#A50026", "#A50026", "#A50026")
-pdf("scatterplots_NOSaturatingColor.pdf")
+png("scatterplots_mediumSaturatingColor.png",res = 300,width = 4, height = 4, units = 'in')
+buylrd <- c("#313695", "#4575B4", "#74ADD1", "#ABD9E9", "#E0F3F8", "#FFFFBF", "#FEE090", "#FDAE61", "#F46D43", "#D73027", "#A50026",
+            "#A50026", "#A50026", "#A50026", "#A50026","#A50026", "#A50026", "#A50026", "#A50026","#A50026", "#A50026", "#A50026",
+           "#A50026", "#A50026", "#A50026", "#A50026","#A50026", "#A50026", "#A50026", "#A50026","#A50026", "#A50026", "#A50026")
+#pdf("scatterplots_NOSaturatingColor.pdf")
 #svg("scatterplots_NOSaturatingColor.svg")
-buylrd <- c("#313695", "#4575B4", "#74ADD1", "#ABD9E9", "#E0F3F8", "#FFFFBF", "#FEE090", "#FDAE61", "#F46D43", "#D73027", "#A50026")
+#buylrd <- c("#313695", "#4575B4", "#74ADD1", "#ABD9E9", "#E0F3F8", "#FFFFBF", "#FEE090", "#FDAE61", "#F46D43", "#D73027", "#A50026")
             
 par(mfrow=c(2,2))
 
