@@ -73,7 +73,7 @@ table(DRB_DMS_ACH2==Inf|DRB_DMS_ACH2==-Inf|DRB_DMS_ACH2=='NaN'|DRB_DMS_ACH2==NA)
 table(ACT_DMS_ACH2==Inf|ACT_DMS_ACH2==-Inf|ACT_DMS_ACH2=='NaN'|ACT_DMS_ACH2==NA)
 ##############################
 table( DRB_DMS_H2AZ > (1)   )      
-table( DRB_DMS_H2AZ > (-1)   )          
+table( DRB_DMS_H2AZ < (-1)   )          
               
 table( ACT_DMS_H2AZ > (1)     )     
 table( ACT_DMS_H2AZ < (-1)     )
