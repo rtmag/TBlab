@@ -66,20 +66,33 @@ ACT_DMS_H2AZ = log2(rowSums(h2az[,201:400]))-log2(rowSums(h2az[,401:600]) )
 
 DRB_DMS_ACH2 = log2(rowSums(ach2az[,1:200]))-log2(rowSums(ach2az[,401:600]) )
 ACT_DMS_ACH2 = log2(rowSums(ach2az[,201:400]))-log2(rowSums(ach2az[,401:600]) )
-              
+##############################
 table(DRB_DMS_H2AZ==Inf|DRB_DMS_H2AZ==-Inf|DRB_DMS_H2AZ=='NaN'|DRB_DMS_H2AZ==NA)
 table(ACT_DMS_H2AZ==Inf|ACT_DMS_H2AZ==-Inf|ACT_DMS_H2AZ=='NaN'|ACT_DMS_H2AZ==NA)
 table(DRB_DMS_ACH2==Inf|DRB_DMS_ACH2==-Inf|DRB_DMS_ACH2=='NaN'|DRB_DMS_ACH2==NA)
 table(ACT_DMS_ACH2==Inf|ACT_DMS_ACH2==-Inf|ACT_DMS_ACH2=='NaN'|ACT_DMS_ACH2==NA)
-#
+##############################
 table( DRB_DMS_H2AZ > (1)   )      
 table( DRB_DMS_H2AZ > (-1)   )          
               
 table( ACT_DMS_H2AZ > (1)     )     
-table( ACT_DMS_H2AZ > (-1)     )
+table( ACT_DMS_H2AZ < (-1)     )
               
 table( DRB_DMS_ACH2 > (1)       )   
-table( DRB_DMS_ACH2 > (-1)     )
+table( DRB_DMS_ACH2 < (-1)     )
               
 table( ACT_DMS_ACH2 > (1)       )   
-table( ACT_DMS_ACH2 > (-1)    )
+table( ACT_DMS_ACH2 < (-1)    )
+##############################
+              
+table( DRB_DMS_H2AZ > (1) & ( log2(rowSums(h2az[,1:200]))>10| log2(rowSums(h2az[,401:600]) )>10  )      )
+table( DRB_DMS_H2AZ < (-1) & ( log2(rowSums(h2az[,1:200]))>10| log2(rowSums(h2az[,401:600]) )>10  )     )          
+              
+table( ACT_DMS_H2AZ > (1)   & ( log2(rowSums(h2az[,201:400]))>10| log2(rowSums(h2az[,401:600]) )>10  )  )     
+table( ACT_DMS_H2AZ < (-1)  & ( log2(rowSums(h2az[,201:400]))>10| log2(rowSums(h2az[,401:600]) )>10  )  )
+              
+table( DRB_DMS_ACH2 > (1)   & ( log2(rowSums(ach2az[,1:200]))>5| log2(rowSums(ach2az[,401:600]) )>5  )    )   
+table( DRB_DMS_ACH2 < (-1)  & ( log2(rowSums(ach2az[,1:200]))>5| log2(rowSums(ach2az[,401:600]) )>5  )    )
+              
+table( ACT_DMS_ACH2 > (1)   & ( log2(rowSums(ach2az[,201:400]))>5| log2(rowSums(ach2az[,401:600]) )>5  )    )   
+table( ACT_DMS_ACH2 < (-1)  & ( log2(rowSums(ach2az[,201:400]))>5| log2(rowSums(ach2az[,401:600]) )>5  )    )
