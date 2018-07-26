@@ -8,6 +8,23 @@ h2az = read.table(pipe("grep -v '#' h2azOnly_20bp_2kb_QNORM.rmat|grep -v 'genes'
 
 ach2az = read.table(pipe("grep -v '#' ach2azOnly_20bp_2kb_CPM.rmat|grep -v 'genes'"),sep="\t")
 
+####
+pdf("colorGradient.pdf",width = 4, height = 4)
+par(mfrow=c(1,3))
+legend_image <- as.raster(matrix(cbind(rev(buylrd)), ncol=1))
+plot(c(0,2),c(0,1),type = 'n', axes = F,xlab = '', ylab = '', main = '')
+rasterImage(legend_image, 0, 0, 1,1)
+
+legend_image <- as.raster(matrix(cbind(rev(c("#313695", "#4575B4", "#74ADD1", "#ABD9E9", "#E0F3F8", "#FFFFBF", "#FEE090", "#FDAE61", "#F46D43", "#D73027", "#A50026",
+            "#A50026", "#A50026", "#A50026", "#A50026","#A50026"))), ncol=1))
+plot(c(0,2),c(0,1),type = 'n', axes = F,xlab = '', ylab = '', main = '')
+rasterImage(legend_image, 0, 0, 1,1)
+
+legend_image <- as.raster(matrix(cbind(rev(c("#313695", "#4575B4", "#74ADD1", "#ABD9E9", "#E0F3F8", "#FFFFBF", "#FEE090", "#FDAE61", "#F46D43", "#D73027", "#A50026"
+            ))), ncol=1))
+plot(c(0,2),c(0,1),type = 'n', axes = F,xlab = '', ylab = '', main = '')
+rasterImage(legend_image, 0, 0, 1,1)
+dev.off()
 #########
 #CorTest
 pdf("cortest.pdf")
