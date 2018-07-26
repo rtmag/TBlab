@@ -8,6 +8,27 @@ h2az = read.table(pipe("grep -v '#' h2azOnly_20bp_2kb_QNORM.rmat|grep -v 'genes'
 
 ach2az = read.table(pipe("grep -v '#' ach2azOnly_20bp_2kb_CPM.rmat|grep -v 'genes'"),sep="\t")
 
+#########
+#CorTest
+pdf("cortest.pdf")
+par(mfrow=c(2,2))
+plot(1,col='white',xlab= "DRB",ylab="DMSO",xaxt='n',yaxt='n',main="H2AZ")
+tx = cor.test(asinh(rowSums(h2az[,1:200])),asinh(rowSums(h2az[,401:600]) ),method="pearson")$estimate
+legend('center',paste("Pearson correlation",round(tx,digits=3)),bty = "n",cex=1)
+plot(1,col='white',xlab= "DRB",ylab="DMSO",xaxt='n',yaxt='n',main="AcH2AZ")
+tx = cor.test(asinh(rowSums(ach2az[,1:200])),asinh(rowSums(ach2az[,401:600]) ),method="pearson")$estimate
+legend('center',paste("Pearson correlation",round(tx,digits=3)),bty = "n",cex=1)
+plot(1,col='white',xlab= "ACTD",ylab="DMSO",xaxt='n',yaxt='n',main="H2AZ")
+tx = cor.test(asinh(rowSums(h2az[,201:400])),asinh(rowSums(h2az[,401:600]) ),method="pearson")$estimate
+legend('center',paste("Pearson correlation",round(tx,digits=3)),bty = "n",cex=1)
+plot(1,col='white',xlab= "ACTD",ylab="DMSO",xaxt='n',yaxt='n',main="AcH2AZ")
+tx = cor.test(asinh(rowSums(ach2az[,201:400])),asinh(rowSums(ach2az[,401:600]) ),method="pearson")$estimate
+legend('center',paste("Pearson correlation",round(tx,digits=3)),bty = "n",cex=1)
+dev.off()
+
+smoothScatter(asinh(rowSums(h2az[,201:400])),asinh(rowSums(h2az[,401:600]) ))
+smoothScatter(asinh(rowSums(ach2az[,201:400])),asinh(rowSums(ach2az[,401:600]) ))
+#######################
 brewer.pal(11, "RdYlBu")
 
 
