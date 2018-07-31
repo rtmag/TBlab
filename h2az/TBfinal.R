@@ -220,3 +220,42 @@ par(new=NULL)
 #
 dev.off()
 ###########################################################
+
+              
+              
+              
+h2az = read.table(pipe("grep -v '#' h2azOnly_20bp_2kb_QNORM.rmat|grep -v 'genes'"),sep="\t")
+ach2az = read.table(pipe("grep -v '#' ach2azOnly_20bp_2kb_CPM.rmat|grep -v 'genes'"),sep="\t")
+
+h2az_DRB = (rowSums(h2az[,1:200]))
+h2az_ACTD = (rowSums(h2az[,201:400]))
+h2az_DMSO = (rowSums(h2az[,401:600]))
+
+ach2az_DRB = (rowSums(ach2az[,1:200]))
+ach2az_ACTD = (rowSums(ach2az[,201:400]))
+ach2az_DMSO = (rowSums(ach2az[,401:600]))
+              
+trh2 = summary(c(h2az_DRB,h2az_ACTD,h2az_DMSO))[5]
+trac = summary(c(ach2az_DRB,ach2az_ACTD,ach2az_DMSO))[5]
+
+h2_DRB_DMSO = (h2az_DRB/h2az_DMSO)
+h2_DRB_DMSO = h2_DRB_DMSO[h2az_DRB>trh2 | h2az_DMSO>trh2]
+table(h2_DRB_DMSO>2)
+table(h2_DRB_DMSO<0.5)
+
+h2_ACTD_DMSO = (h2az_ACTD/h2az_DMSO)
+h2_ACTD_DMSO = h2_ACTD_DMSO[h2az_ACTD>trh2 | h2az_DMSO>trh2]
+table(h2_ACTD_DMSO>2)
+table(h2_ACTD_DMSO<0.5)
+#
+ach2_DRB_DMSO = (ach2az_DRB/ach2az_DMSO)
+ach2_DRB_DMSO = ach2_DRB_DMSO[ach2az_DRB>trac | ach2az_DMSO>trac]
+table(ach2_DRB_DMSO>2)
+table(ach2_DRB_DMSO<0.5)
+
+ach2_ACTD_DMSO = (ach2az_ACTD/ach2az_DMSO)
+ach2_ACTD_DMSO = ach2_ACTD_DMSO[ach2az_ACTD>trac | ach2az_DMSO>trac]
+table(ach2_ACTD_DMSO>2)
+table(ach2_ACTD_DMSO<0.5)
+              
+####
