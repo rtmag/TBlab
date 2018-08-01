@@ -15,3 +15,5 @@ python /home/rtm/myprograms/danpos-2.2.2/danpos.py dpos --paired 1 -o siMyc_res 
 
 python /home/rtm/myprograms/danpos-2.2.2/danpos.py wiq --buffer_size 60 /home/rtm/references/hg38.chrom.sizes NTC.smooth.wig:siMyc.smooth.wig &> norm.log
 ################################################################################################################
+~/myprograms/kentUtils/bin/linux.x86_64/wigToBigWig NTC.smooth.qnor.wig /home/rtm/references/hg38.chrom.sizes NTC.smooth.qnor.bw  -clip
+~/myprograms/kentUtils/bin/linux.x86_64/wigToBigWig siMyc.smooth.qnor.wig /home/rtm/references/hg38.chrom.sizes siMyc.smooth.qnor.bw  -clip
