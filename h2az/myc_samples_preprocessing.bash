@@ -13,4 +13,5 @@ python /home/rtm/myprograms/danpos-2.2.2/danpos.py dpos --paired 1 -o NTC_res NT
 
 python /home/rtm/myprograms/danpos-2.2.2/danpos.py dpos --paired 1 -o siMyc_res siMyc &> siMyc.log
 
+python /home/rtm/myprograms/danpos-2.2.2/danpos.py wiq 
 ################################################################################################################
