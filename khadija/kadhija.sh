@@ -34,6 +34,8 @@ ERR671880.fastq.gz \
 --outSAMtype BAM SortedByCoordinate
 ###
 ##
+samtools index ERR671805Aligned.sortedByCoord.out.bam &
+samtools index ERR671880Aligned.sortedByCoord.out.bam &
 #
 bamCoverage -p max -bs 1 --normalizeUsing CPM -b ERR671805Aligned.sortedByCoord.out.bam -o ERR671805_hl60_cebpe.bw
 bamCoverage -p max -bs 1 --normalizeUsing CPM -b ERR671880Aligned.sortedByCoord.out.bam -o ERR671880_hl60_cebpe.bw
