@@ -13,6 +13,12 @@ STAR --genomeDir /root/resources/star_hg38_gencode27_overhang50/ \
 --outSAMtype BAM SortedByCoordinate  \
 --outFileNamePrefix hl60_
 
+samtools index hl60_Aligned.sortedByCoord.out.bam 
+#
+bamCoverage -p max -bs 1 --normalizeUsing CPM -b hl60_Aligned.sortedByCoord.out.bam  -o hl60_Aligned.bw
+
+##########
+
 STAR --genomeDir /root/resources/star_hg38_gencode27_overhang50/ \
 --runThreadN 55 \
 --readFilesIn SRR494110.fastq \
