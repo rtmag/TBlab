@@ -99,3 +99,42 @@ colnames(combined_data)<- c("RPKM_hl60_nuclei_S-phase_1h_clicked","RPKM_hl60_nuc
 
 saveRDS(combined_data,"hl60_nuclei_RPKM_sumCPM.rds")
 write.csv(combined_data,"hl60_nuclei_RPKM_sumCPM.csv")
+
+
+
+##########
+# REDO just RPKM
+
+# RPKM calculation
+library(edgeR)
+library(Rsubread)
+options(scipen=999)
+
+
+x=read.table('TSS_gencode.v36.annotation_chrRemoved.bed',sep="\t",stringsAsFactors=F)
+
+x[x[,6]=="+",2] <- x[x[,6]=="+",2]-2000
+x[x[,6]=="-",3] <- x[x[,6]=="-",3]+2000
+x[x[,2]<1,2] = 1
+
+ann = data.frame(GeneID=x[,4],Chr=x[,1],Start=x[,2],End=x[,3],Strand='+')
+
+fc_SE <- featureCounts(c("hl60_nuclei_S-phase_1h_clicked.sorted.bam","hl60_nuclei_S-phase_1h.sorted.bam"),
+                       annot.ext=ann,isPairedEnd=FALSE,nthreads=40)
+
+
+x_rpkm <- DGEList(counts=fc_SE$counts, genes=fc_SE$annotation[,c("GeneID","Length")])
+x_rpkm <- rpkm(x_rpkm,x_rpkm$genes$Length)
+
+rpkm<-readRDS("hl60_nuclei_rpkm.rds")
+
+mbind<-function(...){
+ Reduce( function(x,y){cbind(x,y[match(row.names(x),row.names(y)),])}, list(...) )
+}
+
+combined_data<- mbind(rpkm,x_rpkm)
+
+colnames(combined_data)<- c("GENES_hl60_nuclei_S-phase_1h_clicked","GENES_hl60_nuclei_S-phase_1h","2KBups_sum_hl60_nuclei_S-phase_1h_clicked","2KBups_sum_hl60_nuclei_S-phase_1h")
+
+saveRDS(combined_data,"HL60_nuclei_RPKM.rds")
+write.csv(combined_data,"HL60_nuclei_RPKM.csv")
